@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <time.h>
+# include <stdbool.h>
+# include <term.h>
 
 /*
 ** Structure principal
@@ -28,6 +30,7 @@ typedef struct	s_game
 	int			**grid;
 	int			ia;
 	int			game_mode;
+	int			fd;
 }				t_game;
 
 /*
@@ -71,5 +74,27 @@ int				**fill_grid(int row, int column);
 ** checker.c
 */
 int				get_player_input(t_game *game);
+
+/*
+** |----------------------------------------------------------------------------
+** |                                                                           |
+** |                                 TERMCAP                                   |
+** |                                                                           |
+** |----------------------------------------------------------------------------
+*/
+
+/*
+** get_values.c
+*/
+bool			is_alpha(const char *buffer);
+bool			is_enter(const char *buffer);
+bool			is_echap(const char *buffer);
+
+/*
+** init_terminal.c
+*/
+void			set_terminal_mode(t_game *game);
+void			unset_terminal_mode(t_game *game);
+int				ft_print(int c);
 
 #endif

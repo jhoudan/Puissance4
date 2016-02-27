@@ -67,7 +67,7 @@ static void		select_column(t_game *game)
 		if (game->column < 7 || game->column > 50)
 		{
 			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
-				buff,"\n\033[31mIs not a valid");
+				buff, "\n\033[31mIs not a valid");
 			ft_putendl_fd(" argument take [7 - 50]", 2);
 			ft_strdel(&buff);
 		}
@@ -110,5 +110,5 @@ int				take_all_param_to_begin(t_game *game)
 	select_display_mode(game);
 	srand(time(NULL));
 	game->ia = (rand() % 2) + 1;
-	return (0);	
+	return (0);
 }

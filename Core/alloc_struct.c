@@ -22,7 +22,7 @@ t_game		*init_game(void)
 	return (game);
 }
 
-int		**fill_grid(int row, int column)
+int			**fill_grid(int row, int column)
 {
 	int	**grid;
 	int	i;
