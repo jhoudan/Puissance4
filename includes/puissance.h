@@ -36,6 +36,7 @@ typedef struct	s_game
 	int			ia;
 	int			game_mode;
 	int			profondeur;
+	int			multi_players;
 }				t_game;
 
 /*
@@ -66,6 +67,11 @@ void			free_game(t_game *game);
 ** init_game.c
 */
 int				take_all_param_to_begin(t_game *game);
+
+/*
+** init_game_2.c
+*/
+void			select_multiplayers(t_game *game);
 
 /*
 ** |----------------------------------------------------------------------------
