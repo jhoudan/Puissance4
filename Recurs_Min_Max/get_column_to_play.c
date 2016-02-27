@@ -33,7 +33,7 @@ static int			*get_recurs_weight_tab(t_game *game, int *values,
 		if (values[i_column])
 		{
 			cpy_game = copy_struct_game(game);
-			put_in_grid(cpy_game, i_column);
+			put_in_grid(cpy_game, i_column, player);
 			values[i_column] = recurs_get_column(cpy_game, depth - 1,
 				(player == 1) ? 2 : 1);
 			ft_putnbrendl(values[i_column]);
