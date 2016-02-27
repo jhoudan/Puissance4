@@ -12,15 +12,26 @@
 
 #include "../includes/puissance.h"
 
+int		get_line_pos(t_game grid, int column);
+int		*get_valid_column(t_game game);
+
 int		main(void)
 {
 	t_game	*game;	
+	int		i;
+	int		*ret;
 
 	game = init_game();
 	game->column = 5;
-	game->row = 4;
-	game->grid = fill_grid(game->row, game->column);
-	game->grid[1][2];
-	ft_putnbrendl(game, 2);
+	game->line = 4;
+	game->grid = fill_grid(game->line, game->column);
+	game->grid[0][3] = 1;
+	game->grid[0][2] = 1;
+	game->grid[0][0] = 1;
+	// ft_putnbrendl(get_line_pos_when_put_the_piece(*game, 3));
+	ret = get_valid_columns(*game);
+	i = 0;
+	while (i < game->column)
+		ft_putnbrendl(ret[i++]);
 	return (0);
 }
