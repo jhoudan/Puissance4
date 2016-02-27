@@ -6,7 +6,7 @@
 /*   By: jhoudan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 17:11:21 by jhoudan           #+#    #+#             */
-/*   Updated: 2016/02/27 17:12:13 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 17:15:15 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*print_read_error(void)
 {
 	ft_putstr("\n\033[31mPuissance4: critical error -> ");
 	ft_putstr(strerror(errno));
-	ft_putstr("\n\033[0m\n");
+	ft_putstr("\033[0m\n");
 	return (NULL);
 }
 
