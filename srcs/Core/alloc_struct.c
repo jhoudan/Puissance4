@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:26:28 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 13:26:30 by mdezitte         ###   ########.fr       */
+/*   Updated: 2016/02/27 13:55:59 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ t_game		*init_game(void)
 	game = (t_game *)malloc(sizeof(t_game));
 	game->column = -1;
 	game->line = -1;
+	game->grid = NULL;
 	return (game);
 }
