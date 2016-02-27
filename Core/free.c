@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:25:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:09:24 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:18:06 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	delete_grid(int **grid, int row)
 		i++;
 	}
 	free(grid);
-	grid = NULL;
 	return (1);
 }
 
