@@ -18,7 +18,7 @@
 **	ne souhaite pas)
 */
 
-int		get_line_pos(t_game game, int column)
+int		get_line_pos_when_put_the_piece(t_game game, int column)
 {
 	int		line;
 

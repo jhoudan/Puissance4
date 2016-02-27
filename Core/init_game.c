@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:51:36 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:20:43 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:55:20 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static void		select_display_mode(t_game *game)
 	{
 		ft_putendl("\033[33mChoise your display mode :");
 		ft_putstr("Enter [shell] for shell mode [graphic] for graphic mode :");
-		buff = read_one_line(0);
+		if (!(buff = read_one_line(0)))
+			return ;
 		if (ft_strcmp(buff, "shell") == 0)
 		{
 			game->game_mode = 1;
@@ -62,7 +63,8 @@ static void		select_column(t_game *game)
 	while (42)
 	{
 		ft_putstr("\033[33mEnter number of column :\033[0m ");
-		buff = read_one_line(0);
+		if (!(buff = read_one_line(0)))
+			return ;
 		game->column = get_number(buff);
 		if (game->column < 7 || game->column > 50)
 		{
@@ -86,7 +88,8 @@ static void		select_line(t_game *game)
 	while (42)
 	{
 		ft_putstr("\033[33mEnter number of line :\033[0m ");
-		buff = read_one_line(0);
+		if (!(buff = read_one_line(0)))
+			return ;
 		game->line = get_number(buff);
 		if (game->line < 6 || game->line > 50)
 		{
@@ -106,8 +109,14 @@ static void		select_line(t_game *game)
 int				take_all_param_to_begin(t_game *game)
 {
 	select_column(game);
+	if (game->column == -1)
+		return (1);
 	select_line(game);
+	if (game->line == -1)
+		return (1);
 	select_display_mode(game);
+	if (game->game_mode == -1)
+		return (1);
 	srand(time(NULL));
 	game->ia = (rand() % 2) + 1;
 	return (0);

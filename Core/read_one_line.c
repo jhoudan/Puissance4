@@ -38,5 +38,7 @@ char	*read_one_line(int fd)
 		}
 		ft_memset(buffer, 0, 26);
 	}
+	if (ret == -1)
+		return (NULL);
 	return (str);
 }

@@ -19,12 +19,14 @@
 **	mettre dedans.
 */
 
-int		*get_valid_column(t_game game)
+int		*get_valid_columns(t_game game)
 {
 	int		*ret;
 	int		i_column;
 
 	ret = ft_memalloc(sizeof(int) * game.column);
+	if (ret == NULL)
+		return (NULL);
 	i_column = 0;
 	while (i_column < game.column)
 	{

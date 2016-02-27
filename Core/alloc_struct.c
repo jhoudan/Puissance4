@@ -24,24 +24,24 @@ t_game		*init_game(void)
 	return (game);
 }
 
-int			**fill_grid(int row, int column)
+int			**fill_grid(int line, int column)
 {
 	int	**grid;
 	int	i;
 
-	grid = (int**)malloc(sizeof(int*) * (row + 1));
+	grid = (int**)malloc(sizeof(int*) * (line + 1));
 	if (!grid)
 		return (NULL);
-	grid[row] = NULL;
-	while (--row >= 0)
+	grid[line] = NULL;
+	while (--line >= 0)
 	{
-		grid[row] = (int*)malloc(sizeof(int) * column);
-		if (!grid[row])
+		grid[line] = (int*)malloc(sizeof(int) * column);
+		if (!grid[line])
 			return (NULL);
 		i = 0;
 		while (i < column)
 		{
-			grid[row][i] = 0;
+			grid[line][i] = 0;
 			i++;
 		}
 	}
