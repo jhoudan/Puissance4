@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   alloc_struct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 12:48:11 by jhoudan          ###   ########.fr       */
+/*   Created: 2016/02/27 13:26:28 by mdezitte          #+#    #+#             */
+/*   Updated: 2016/02/27 13:26:30 by mdezitte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/puissance.h"
 
-int				main(void)
+t_game		*init_game(void)
 {
-	t_game	*game;
+	t_game *game;
 
-	game = init_game();
-	take_all_param_to_begin(game);
-	free_game(game);
-	return (0);
+	game = (t_game *)malloc(sizeof(t_game));
+	game->column = -1;
+	game->line = -1;
+	return (game);
 }

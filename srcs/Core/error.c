@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 12:48:11 by jhoudan          ###   ########.fr       */
+/*   Created: 2016/02/27 12:59:55 by mdezitte          #+#    #+#             */
+/*   Updated: 2016/02/27 12:59:57 by mdezitte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/puissance.h"
 
-int				main(void)
+int			ft_error(const char *s1, const char *s2, const char *s3)
 {
-	t_game	*game;
-
-	game = init_game();
-	take_all_param_to_begin(game);
-	free_game(game);
-	return (0);
+	ft_putstr_fd(s1, 2);
+	ft_putstr_fd(s2, 2);
+	ft_putstr_fd(s3, 2);
+	return (-1);
 }

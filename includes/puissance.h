@@ -17,6 +17,9 @@
 # include "color.h"
 # include <stdlib.h>
 
+/*
+** Structure principal
+*/
 typedef struct	s_game
 {
 	int			column;
@@ -24,6 +27,32 @@ typedef struct	s_game
 	int			**grid;
 }				t_game;
 
-int				game_core(t_game *game);
+/*
+** |----------------------------------------------------------------------------
+** |                                                                           |
+** |                                  CORE                                     |
+** |                                                                           |
+** |----------------------------------------------------------------------------
+*/
+
+/*
+** alloc_struct.c
+*/
+t_game			*init_game(void);
+
+/*
+** error.c
+*/
+int				ft_error(const char *s1, const char *s2, const char *s3);
+
+/*
+** free.c
+*/
+void			free_game(t_game *game);
+
+/*
+** init_game.c
+*/
+int				take_all_param_to_begin(t_game *game);
 
 #endif
