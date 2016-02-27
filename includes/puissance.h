@@ -22,6 +22,8 @@
 # include <errno.h>
 
 # define WIN_VALUE		10000
+# define IA				1
+# define PLAYER			2
 
 # define RED_DOT "\e[0;41m \e[0m"
 # define YELLOW_DOT "\e[0;43m \e[0m"
@@ -108,9 +110,8 @@ int				find_value_to_ret(t_game *game, int *values, int player);
 int				recurs_get_column(t_game *game, int depth, int player);
 
 
-void			put_in_grid(t_game *game, int put_in);
+void			put_in_grid(t_game *game, int put_in, int identifier);
 t_game			*copy_struct_game(t_game *original);
-
 
 /*
 ** |----------------------------------------------------------------------------
@@ -121,4 +122,5 @@ t_game			*copy_struct_game(t_game *original);
 */
 
 void			draw_grid(t_game *game);
+
 #endif
