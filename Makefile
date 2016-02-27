@@ -6,7 +6,7 @@
 #    By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/10 10:00:41 by mressier          #+#    #+#              #
-#    Updated: 2016/02/27 15:07:14 by jhoudan          ###   ########.fr        #
+#    Updated: 2016/02/27 17:52:12 by mdumouli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ CORE = alloc_struct.c \
 		read_one_line.c \
 		main.c
 
+DISPLAY = drawshell.c \
 
 CHECK = checker.c \
 
@@ -41,7 +42,9 @@ SRC_CHECK = $(addprefix Check/, $(CHECK))
 
 SRC_NCURSES = $(addprefix Ncurses/, $(NCURSES))
 
-SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP)
+SRC_DISPLAY = $(addprefix Display/, $(DISPLAY))
+
+SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_DISPLAY)
 
 OBJ = $(SRC:%.c=.tmp/%.o)
 
@@ -56,6 +59,7 @@ prepare:
 		mkdir -p .tmp/Core
 		mkdir -p .tmp/Check
 		mkdir -p .tmp/Termcap
+		mkdir -p .tmp/Display
 
 norm:
 		norminette $(SRC) $(HEADER)
