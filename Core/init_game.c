@@ -29,49 +29,86 @@ static int		get_number(char *buff)
 	return (i);
 }
 
-static int		select_column(t_game *game)
+static void		select_display_mode(t_game *game)
 {
 	char	*buff;
 
-	ft_putstr("\033[33mEnter number of column :\033[0m ");
-	get_next_line(0, &buff);
-	game->column = get_number(buff);
-	if (game->column < 7 || game->column > 50)
+	while (42)
 	{
-		ft_error("\033[31m[PARSE ERROR]\033[0m : ",
-			buff,"\n\033[31mIs not a valid");
-		ft_putendl_fd(" argument take [7 - 50]", 2);
+		ft_putendl("\033[33mChoise your display mode :");
+		ft_putstr("Enter [shell] for shell mode [graphic] for graphic mode :");
+		get_next_line(0, &buff);
+		if (ft_strcmp(buff, "shell") == 0)
+		{
+			game->game_mode = 1;
+			ft_strdel(&buff);
+			break ;
+		}
+		if (ft_strcmp(buff, "graphic") == 0)
+		{
+			game->game_mode = 2;
+			ft_strdel(&buff);
+			break ;
+		}
+		ft_error("\033[31m[PARSE ERROR] : ", buff, " not valid\n");
 		ft_strdel(&buff);
-		return (-1);
 	}
-	ft_strdel(&buff);
-	return (0);
 }
 
-static int 		select_line(t_game *game)
+static void		select_column(t_game *game)
 {
 	char	*buff;
 
-	ft_putstr("\033[33mEnter number of line :\033[0m ");
-	get_next_line(0, &buff);
-	game->line = get_number(buff);
-	if (game->line < 6)
+	while (42)
 	{
-		ft_error("\033[31m[PARSE ERROR]\033[0m : ",
-			buff, "\n\033[31mIs not a valid");
-		ft_putendl_fd(" argument take [6 - 50]", 2);
-		ft_strdel(&buff);
-		return (-1);
+		ft_putstr("\033[33mEnter number of column :\033[0m ");
+		get_next_line(0, &buff);
+		game->column = get_number(buff);
+		if (game->column < 7 || game->column > 50)
+		{
+			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
+				buff,"\n\033[31mIs not a valid");
+			ft_putendl_fd(" argument take [7 - 50]", 2);
+			ft_strdel(&buff);
+		}
+		else
+		{
+			ft_strdel(&buff);
+			break ;
+		}
 	}
-	ft_strdel(&buff);
-	return (0);
+}
+
+static void		select_line(t_game *game)
+{
+	char	*buff;
+
+	while (42)
+	{
+		ft_putstr("\033[33mEnter number of line :\033[0m ");
+		get_next_line(0, &buff);
+		game->line = get_number(buff);
+		if (game->line < 6 || game->line > 50)
+		{
+			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
+				buff, "\n\033[31mIs not a valid");
+			ft_putendl_fd(" argument take [6 - 50]", 2);
+			ft_strdel(&buff);
+		}
+		else
+		{
+			ft_strdel(&buff);
+			break ;
+		}
+	}
 }
 
 int				take_all_param_to_begin(t_game *game)
 {
-	if (select_column(game) == -1)
-		take_all_param_to_begin(game);
-	if (select_line(game) == -1)
-		take_all_param_to_begin(game);
+	select_column(game);
+	select_line(game);
+	select_display_mode(game);
+	srand(time(NULL));
+	game->ia = (rand() % 2) + 1;
 	return (0);	
 }

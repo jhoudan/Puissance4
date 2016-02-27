@@ -1,9 +1,17 @@
-#include "puissance.h"
+#include <puissance.h>
 
 static int	is_valid_input(int input, t_game *game)
 {
-	if (input < 0 || input >= game->column)// || game->grid[game->line-1][input] != 0)
+	if (input < 0 || input >= game->column)
+	{
+		ft_putendl("\033[31mIs out of range\033[0m");
 		return (0);
+	}
+	else if (game->grid[0][input] != 0)
+	{
+		ft_putendl("\033[31mIs already full\033[0m");
+		return (0);
+	}
 	return (1);
 }
 
@@ -15,44 +23,44 @@ static int	ft_isnumber(char *str)
 		return (0);
 	while (*str)
 	{
-		if (!ft_isdigit(*str) && *str != '\n')
+		if (!ft_isdigit(*str))
+		{
+			ft_putendl("\033[31mIs not a number\033[0m");
 			return (0);
+		}
 		str++;
 	}
 	return (1);
 }
 
-static int	print_grid_limit(t_game *game)
+static int	ask_for_input(t_game *game)
 {
-	ft_putstr("Please pick a column between 0 and ");
+	ft_putstr("\033[32mPick a column between 0 and ");
 	ft_putnbr(game->column - 1);
-	ft_putstr(": ");
+	ft_putstr(": \033[0m");
 	return (1);
 }
 
-int			get_input_player(t_game *game)
+int			get_player_input(t_game *game)
 {
 	int		input;
 	char	*line;
 
 	line = NULL;
-	ft_putstr("Pick a column: ");
 	while (42)
 	{
-		get_next_line(STDIN_FILENO, &line);
+		ask_for_input(game);
+		get_next_line(0, &line);
 		if (line && ft_isnumber(line))
 		{
 			input = ft_atoi(line);
 			if (is_valid_input(input, game))
+			{
+				ft_strdel(&line);
 				break ;
+			}
 		}
 		ft_strdel(&line);
-		print_grid_limit(game);
 	}
-	if (line)
-		ft_strdel(&line);
-	ft_putstr("You picked ");
-	ft_putnbr(input);
-	ft_putchar('\n');
 	return (input);
 }

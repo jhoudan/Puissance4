@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 13:57:41 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 14:38:17 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <time.h>
 
 /*
 ** Structure principal
@@ -25,6 +26,8 @@ typedef struct	s_game
 	int			column;
 	int			line;
 	int			**grid;
+	int			ia;
+	int			game_mode;
 }				t_game;
 
 /*
@@ -54,8 +57,19 @@ void			free_game(t_game *game);
 ** init_game.c
 */
 int				take_all_param_to_begin(t_game *game);
-int				get_input_player(t_game *game);
 int				**fill_grid(int row, int column);
-int				delete_grid(int **grid, int row);
+
+/*
+** |----------------------------------------------------------------------------
+** |                                                                           |
+** |                                  CHECK                                    |
+** |                                                                           |
+** |----------------------------------------------------------------------------
+*/
+
+/*
+** checker.c
+*/
+int				get_player_input(t_game *game);
 
 #endif
