@@ -6,7 +6,7 @@
 /*   By: jhoudan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 17:11:21 by jhoudan           #+#    #+#             */
-/*   Updated: 2016/02/27 17:15:15 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 17:26:26 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ char		*read_one_line(int fd)
 	int		size;
 	int		ret;
 
-	size = 0;
-	str = NULL;
+	size = 25;
+	str = ft_strnew(25);
 	ft_memset(buffer, 0, 26);
 	errno = 0;
 	while ((ret = read(fd, buffer, 25)) > 0)
