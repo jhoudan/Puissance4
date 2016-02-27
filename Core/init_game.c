@@ -73,5 +73,7 @@ int				take_all_param_to_begin(t_game *game)
 		return (-1);
 	if (select_line(game) == -1)
 		return (-1);
+	srand(time(NULL));
+	game->ia = (rand() % 2) + 1;
 	return (0);	
 }

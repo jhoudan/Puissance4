@@ -16,6 +16,7 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <time.h>
 
 /*
 ** Structure principal
@@ -25,6 +26,7 @@ typedef struct	s_game
 	int			column;
 	int			line;
 	int			**grid;
+	int			ia;
 }				t_game;
 
 /*
