@@ -23,6 +23,9 @@ CORE = alloc_struct.c \
 
 CHECK = checker.c
 
+TERMCAP = get_values.c \
+		init_terminal.c
+
 ifdef DEBUG
 FLAGS = -Wall -Werror -Wextra -g
 
@@ -36,7 +39,9 @@ SRC_CORE = $(addprefix Core/, $(CORE))
 
 SRC_CHECK = $(addprefix Check/, $(CHECK))
 
-SRC = $(SRC_CORE) $(SRC_CHECK)
+SRC_TERMCAP = $(addprefix Termcap/, $(TERMCAP))
+
+SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP)
 
 OBJ = $(SRC:%.c=.tmp/%.o)
 
@@ -50,6 +55,7 @@ exec:
 prepare:
 		mkdir -p .tmp/Core
 		mkdir -p .tmp/Check
+		mkdir -p .tmp/Termcap
 
 norm:
 		norminette $(SRC) $(HEADER)
