@@ -13,9 +13,9 @@
 #ifndef PUISSANCE_H
 # define PUISSANCE_H
 
-# include "../libZ/includes/libft.h"
-# include "color.h"
+# include "libft.h"
 # include <stdlib.h>
+# include <unistd.h>
 
 /*
 ** Structure principal

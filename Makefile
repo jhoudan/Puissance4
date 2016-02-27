@@ -12,45 +12,72 @@
 
 NAME = puissance4
 
-C_DIR =	srcs
-C_DIRS = $(shell find $(C_DIR) -type d -follow -print)
-C_FILES = $(shell find $(C_DIR) -type f -follow -print | grep "\.c")
+HEADER = includes/puissance.h
 
-O_DIR =	.tmp/obj
-O_DIRS = $(C_DIRS:$(C_DIR)%=$(O_DIR)%)
-O_FILES = $(C_FILES:$(C_DIR)%.c=$(O_DIR)%.o)
+CORE = alloc_struct.c \
+		error.c \
+		free.c \
+		init_game.c \
+		main.c
 
-LIB_PATH = libZ/
-LIB = libZ/libZ.a
+
+CHECK = checker.c
 
 ifdef DEBUG
-	FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Werror -Wextra -g
+
 else
-	FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Werror -Wextra
 endif
 
-INCLUDES = -I ./includes
+LIB = libft
 
-all: $(NAME)
+SRC_CORE = $(addprefix Core/, $(CORE))
 
-$(NAME): $(O_FILES)
-	make -C $(LIB_PATH)
-	gcc $(FLAGS) $(INCLUDES) $(O_FILES) $(LIB) -o $(NAME)
-	echo "\\n\033[33m $(NAME) has successfully been played ღ \033[0;0m\\n"
+SRC_CHECK = $(addprefix Check/, $(CHECK))
 
-$(O_DIR)%.o: $(C_DIR)%.c
-	mkdir -p $(O_DIRS) $(O_DIR)
-	echo "\033[32m♪♫\033[0m"\\c
-	gcc $(INCLUDES) -o $@ -c $<
+SRC = $(SRC_CORE) $(SRC_CHECK)
+
+OBJ = $(SRC:%.c=.tmp/%.o)
+
+.SILENT:
+
+all: prepare compile_lib compile_p $(NAME) exec
+
+exec:
+		printf "\n\n\033[32mRun like this:\n ./$(NAME)\033[39m\n"
+
+prepare:
+		mkdir -p .tmp/Core
+		mkdir -p .tmp/Check
+
+norm:
+		norminette $(SRC) $(HEADER)
+
+compile_lib:
+		make -C $(LIB)/
+
+$(NAME): $(OBJ)
+		gcc $(FLAGS) $(OBJ) -o $(NAME) -L $(LIB)/ -lft -L /usr/lib/ -ltermcap
+
+compile_p:
+		echo "\n\033[34mCompiling $(NAME) wait...\033[39m"
+
+.tmp/%.o: %.c $(HEADER)
+		gcc $(FLAGS) -I $(LIB)/includes -I includes/ -o $@ -c $<
+		printf "\033[33m. \033[39m"
 
 clean:
-	@echo "\\n\033[44m Clean objects ... ⊗_⊙ \033[0;0m\\n"
-	@rm -rf $(O_DIR)
+		make -C $(LIB)/ fclean
+		/bin/rm -rf -- .tmp/
+		echo "\033[41;36mRemoving Objects Wait...\033[49;39m"
+
+clean_proj:
+		/bin/rm -f $(OBJ_SERV) $(OBJ)
 
 fclean: clean
-	@make -C $(LIB_PATH) fclean
-	@echo "\033[44m Clean $(NAME) ... ⊛﹏⊛ \033[0;0m\\n"
-	@rm -rf $(NAME)
-	@rm -rf .tmp/
+		/bin/rm -f $(NAME)
+		make -C $(LIB)/ fclean
+		echo "\033[41;33mRemoving Binary Wait...\033[49;39m\n"
 
 re: fclean all
