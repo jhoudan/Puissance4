@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+         #
+#    By: mdumouli <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/01/10 10:00:41 by mressier          #+#    #+#              #
-#    Updated: 2016/02/27 17:19:07 by jhoudan          ###   ########.fr        #
+#    Created: 2016/02/27 19:04:28 by mdumouli          #+#    #+#              #
+#    Updated: 2016/02/27 19:04:43 by mdumouli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,10 @@ CORE = alloc_struct.c \
 		free.c \
 		init_game.c \
 		init_game_2.c \
+		put_in_grid.c \
 		main.c
 
+DISPLAY = drawshell.c \
 
 CHECK = checker.c \
 
@@ -44,9 +46,11 @@ SRC_CHECK = $(addprefix Check/, $(CHECK))
 
 SRC_NCURSES = $(addprefix Ncurses/, $(NCURSES))
 
+SRC_DISPLAY = $(addprefix Display/, $(DISPLAY))
+
 SRC_TOOLS = $(addprefix Tools/, $(TOOLS))
 
-SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_TOOLS)
+SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_TOOLS) $(SRC_DISPLAY)
 
 OBJ = $(SRC:%.c=.tmp/%.o)
 
@@ -61,6 +65,7 @@ prepare:
 		mkdir -p .tmp/Core
 		mkdir -p .tmp/Check
 		mkdir -p .tmp/Termcap
+		mkdir -p .tmp/Display
 		mkdir -p .tmp/Tools
 
 norm:
