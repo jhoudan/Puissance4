@@ -25,7 +25,7 @@ int				main(void)
 		free(game);
 		return (-1);
 	}
-	ncurses_init(game);
+	// ncurses_init(game);
 	input = get_player_input(game);
 	draw_grid(game);
 	if (game->multi_players == 1)
