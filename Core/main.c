@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:28:03 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:42:08 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int				main(void)
 	t_game	*game;
 	int		input;
 
-	game = init_game();
+	if (!(game = init_game()))
+		return (-1);
 	take_all_param_to_begin(game);
 	if (!(game->grid = fill_grid(game->line, game->column)))
 	{
