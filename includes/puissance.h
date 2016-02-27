@@ -19,6 +19,7 @@
 # include <time.h>
 # include <stdbool.h>
 # include <term.h>
+# include <fcntl.h>
 
 /*
 ** Structure principal
