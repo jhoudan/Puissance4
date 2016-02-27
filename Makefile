@@ -20,6 +20,7 @@ CORE = alloc_struct.c \
 		init_game.c \
 		main.c
 
+
 CHECK = checker.c
 
 ifdef DEBUG

@@ -2,7 +2,7 @@
 
 static int	is_valid_input(int input, t_game *game)
 {
-	if (input < 0 || input >= game->column)// || game->grid[game->line-1][input] != 0)
+	if (input < 0 || input >= game->column || game->grid[0][input] != 0)
 		return (0);
 	return (1);
 }
