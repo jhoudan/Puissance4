@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/26 20:12:29 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 10:23:37 by mdezitte         ###   ########.fr       */
+/*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
+/*   Updated: 2016/02/27 12:43:15 by mdezitte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "puissance.h"
+#include "../../includes/puissance.h"
 
 static void		print_result(int status)
 {
@@ -76,7 +76,8 @@ int				main(void)
 		free_game(game);
 		return (-1);
 	}
-	result = game_core(game);
+	result = 0;
+	//result = game_core(game);
 	print_result(result);
 	free_game(game);
 	return (0);
