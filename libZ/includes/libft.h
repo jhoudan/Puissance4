@@ -189,6 +189,8 @@ int					ft_putwchar(wchar_t wc);
 void				ft_puterror(const char *str);
 void				ft_putstr_color(const char *color, const char *s);
 
+void				ft_print_tabi(int **tabi, int nb_line, int nb_case);
+
 /*
 **  	------------------------------------------------------
 **  	|						LST		         	         |
