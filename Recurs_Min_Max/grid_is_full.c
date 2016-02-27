@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_line_pos.c                                     :+:      :+:    :+:   */
+/*   grid_is_full.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mressier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 15:28:11 by mressier          #+#    #+#             */
-/*   Updated: 2016/02/27 15:28:12 by mressier         ###   ########.fr       */
+/*   Created: 2016/02/27 19:58:44 by mressier          #+#    #+#             */
+/*   Updated: 2016/02/27 19:58:45 by mressier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/puissance.h"
 
-/*
-**	Return 	
-*/
-
-int		get_line_pos(t_game grid, int column)
+int		grid_is_full(t_game *game)
 {
-	int		line;
+	int		*value;
+	int		i;
 
-	line = 0;
-	while (line < grid.line)
+	i = 0;
+	value = get_valid_column(*game);
+	while (i < game->column)
 	{
-		if (grid.grid[column][line] != 0)
-			return (line == 0 ? -1 : line);
-		line++;
+		if (value[i])
+			return (0);
+		i++;
 	}
-	return (line - 1);
+	return (1);
 }

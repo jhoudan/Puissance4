@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+         #
+#    By: mdumouli <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/10 10:00:41 by mressier          #+#    #+#              #
-#    Updated: 2016/02/27 17:05:19 by mvarzari         ###   ########.fr        #
+#    Updated: 2016/02/27 21:18:06 by mvarzari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,20 @@ CORE = alloc_struct.c \
 		error.c \
 		free.c \
 		init_game.c \
-		read_one_line.c \
+		init_game_2.c \
+		put_in_grid.c \
 		main.c
 
+DISPLAY = drawshell.c \
 
 CHECK = checker.c \
 
 NCURSES = ncurses_display.c 
+
+TOOLS = tools.c \
+		read_one_line.c
+
+MULTI = multi_player.c
 
 ifdef DEBUG
 FLAGS = -Wall -Werror -Wextra -g
@@ -41,7 +48,13 @@ SRC_CHECK = $(addprefix Check/, $(CHECK))
 
 SRC_NCURSES = $(addprefix Ncurses/, $(NCURSES))
 
-SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_NCURSES)
+SRC_DISPLAY = $(addprefix Display/, $(DISPLAY))
+
+SRC_TOOLS = $(addprefix Tools/, $(TOOLS))
+
+SRC_MULTI  = $(addprefix Multi/, $(MULTI))
+
+SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_TOOLS) $(SRC_DISPLAY) $(SRC_MULTI) $(SRC_NCURSES)
 
 OBJ = $(SRC:%.c=.tmp/%.o)
 
@@ -56,6 +69,10 @@ prepare:
 		mkdir -p .tmp/Core
 		mkdir -p .tmp/Check
 		mkdir -p .tmp/Ncurses
+		mkdir -p .tmp/Termcap
+		mkdir -p .tmp/Display
+		mkdir -p .tmp/Tools
+		mkdir -p .tmp/Multi
 
 norm:
 		norminette $(SRC) $(HEADER)

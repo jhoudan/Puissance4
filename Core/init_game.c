@@ -6,27 +6,38 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:51:36 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:20:43 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:55:20 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance.h"
 
-static int		get_number(char *buff)
+static void		select_difficulty(t_game *game)
 {
-	int		i;
+	char	*buff;
 
-	i = 0;
-	if (ft_strlen(buff) > 2)
-		return (-1);
-	while (buff[i])
+	while (42)
 	{
-		if (ft_isdigit(buff[i]) == 0)
-			return (-1);
-		i++;
+		ft_putendl("\033[33mChoise your difficulty mode :");
+		ft_putstr("Enter [\033[32mnormal\033[33m] or ");
+		ft_putstr("[\033[32mhard\033[33m] : \033[0m");
+		if (!(buff = read_one_line(0)))
+			return ;
+		if (ft_strcmp(buff, "normal") == 0)
+		{
+			game->profondeur = 3;
+			ft_strdel(&buff);
+			break ;
+		}
+		if (ft_strcmp(buff, "hard") == 0)
+		{
+			game->profondeur = 5;
+			ft_strdel(&buff);
+			break ;
+		}
+		ft_error("\033[31m[PARSE ERROR] : ", buff, " not valid\n");
+		ft_strdel(&buff);
 	}
-	i = ft_atoi(buff);
-	return (i);
 }
 
 static void		select_display_mode(t_game *game)
@@ -36,8 +47,10 @@ static void		select_display_mode(t_game *game)
 	while (42)
 	{
 		ft_putendl("\033[33mChoise your display mode :");
-		ft_putstr("Enter [shell] for shell mode [graphic] for graphic mode :");
-		buff = read_one_line(0);
+		ft_putstr("Enter [\033[32mshell\033[33m] for shell mode ");
+		ft_putstr("[\033[32mgraphic\033[33m] for graphic mode : \033[0m");
+		if (!(buff = read_one_line(0)))
+			return ;
 		if (ft_strcmp(buff, "shell") == 0)
 		{
 			game->game_mode = 1;
@@ -62,7 +75,8 @@ static void		select_column(t_game *game)
 	while (42)
 	{
 		ft_putstr("\033[33mEnter number of column :\033[0m ");
-		buff = read_one_line(0);
+		if (!(buff = read_one_line(0)))
+			return ;
 		game->column = get_number(buff);
 		if (game->column < 7 || game->column > 50)
 		{
@@ -86,13 +100,21 @@ static void		select_line(t_game *game)
 	while (42)
 	{
 		ft_putstr("\033[33mEnter number of line :\033[0m ");
-		buff = read_one_line(0);
+		if (!(buff = read_one_line(0)))
+			return ;
 		game->line = get_number(buff);
-		if (game->line < 6 || game->line > 50)
+		if (game->game_mode == 1 && (game->line < 6 || game->line > 50))
 		{
 			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
 				buff, "\n\033[31mIs not a valid");
-			ft_putendl_fd(" argument take [6 - 50]", 2);
+			ft_putendl_fd(" argument take [6 - 40]", 2);
+			ft_strdel(&buff);
+		}
+		else if (game->game_mode == 2 && (game->line < 6 || game->line > 13))
+		{
+			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
+				buff, "\n\033[31mIs not a valid");
+			ft_putendl_fd(" argument take [6 - 13]", 2);
 			ft_strdel(&buff);
 		}
 		else
@@ -105,10 +127,26 @@ static void		select_line(t_game *game)
 
 int				take_all_param_to_begin(t_game *game)
 {
-	select_column(game);
-	select_line(game);
 	select_display_mode(game);
+	if (game->game_mode == -1)
+		return (1);
+	select_difficulty(game);
+	if (game->profondeur == -1)
+		return (1);
+	select_column(game);
+	if (game->column == -1)
+		return (1);
+	select_line(game);
+	if (game->line == -1)
+		return (1);
+	select_multiplayers(game);
+	if (game->multi_players == - 1)
+		return (1);
 	srand(time(NULL));
 	game->ia = (rand() % 2) + 1;
+	if (game->ia == 1)
+		ft_putendl("\033[31mIA Start a Game\033[0m");
+	if (game->ia == 2)
+		ft_putendl("\033[31mYou Start a Game\033[0m");
 	return (0);
 }

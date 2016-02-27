@@ -65,7 +65,7 @@ static void		drawline(int *t, char ch)
 	free(t);
 }
 
-void	draw_grid(t_game *game)
+static void	draw_grid_2(t_game *game)
 {
 	int row;
 	int col;
@@ -113,11 +113,11 @@ void	draw_grid(t_game *game)
 
 }*/
 
-void	key_manager(int key, t_game *game)
+static void	key_manager(int key, t_game *game)
 {
 	MEVENT	event;
 	if (key == KEY_RESIZE)
-		draw_grid(game);
+		draw_grid_2(game);
 	if (key == KEY_MOUSE)
 	{
 		assert(getmouse(&event) == OK);
@@ -139,7 +139,7 @@ void	ncurses_init(t_game *game)
 	curs_set(0);
 	game->grid[0][0] = 2;
 	game->grid[0][1] = 1;
-	draw_grid(game);
+	draw_grid_2(game);
 	mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
 	while((ch = getch()) != 27)
 		key_manager(ch, game);

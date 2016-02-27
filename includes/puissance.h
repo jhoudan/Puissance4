@@ -6,21 +6,28 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 18:22:44 by mvarzari         ###   ########.fr       */
+/*   Updated: 2016/02/27 21:17:35 by mvarzari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUISSANCE_H
 # define PUISSANCE_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <time.h>
 # include <stdbool.h>
 # include <fcntl.h>
 # include <ncurses.h>
+# include <errno.h>
 
+# define WIN_VALUE		10000
+# define IA				1
+# define PLAYER			2
+
+# define RED_DOT "\e[0;41m \e[0m"
+# define YELLOW_DOT "\e[0;43m \e[0m"
 /*
 ** Structure principal
 */
@@ -31,7 +38,8 @@ typedef struct	s_game
 	int			**grid;
 	int			ia;
 	int			game_mode;
-	int			fd;
+	int			profondeur;
+	int			multi_players;
 }				t_game;
 
 /*
@@ -41,6 +49,8 @@ typedef struct	s_game
 ** |                                                                           |
 ** |----------------------------------------------------------------------------
 */
+
+int		multi_player(t_game *game);
 
 /*
 ** alloc_struct.c
@@ -64,6 +74,11 @@ void			free_game(t_game *game);
 int				take_all_param_to_begin(t_game *game);
 
 /*
+** init_game_2.c
+*/
+void			select_multiplayers(t_game *game);
+
+/*
 ** |----------------------------------------------------------------------------
 ** |                                                                           |
 ** |                                  CHECK                                    |
@@ -83,7 +98,34 @@ int				get_player_input(t_game *game);
 ** |                                                                           |
 ** |----------------------------------------------------------------------------
 */
+
 char			*read_one_line(int fd);
+int				get_number(char *buff);
+
+/*
+**	Recurs_min_max
+*/
+int				get_line_pos_when_put_the_piece(t_game grid, int column);
+int				*get_valid_column(t_game game);
+int				get_weight_pos_tab(t_game *game,
+					int **weight_pos_tab, int player);
+int				find_value_to_ret(t_game *game, int *values, int player);
+int				recurs_get_column(t_game *game, int depth, int player);
+int				get_column_to_play(t_game *game);
+int				grid_is_full(t_game *game);
+
+void			put_in_grid(t_game *game, int put_in, int identifier);
+t_game			*copy_struct_game(t_game *original);
+
+/*
+** |----------------------------------------------------------------------------
+** |                                                                           |
+** |                                DISPLAY                                    |
+** |                                                                           |
+** |----------------------------------------------------------------------------
+*/
+
+void			draw_grid(t_game *game);
 
 
 /*

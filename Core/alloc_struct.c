@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:26:28 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:38:03 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:54:56 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,34 @@ t_game		*init_game(void)
 {
 	t_game *game;
 
-	game = (t_game *)malloc(sizeof(t_game));
+	if (!(game = (t_game *)malloc(sizeof(t_game))))
+		return (NULL);
 	game->column = -1;
 	game->line = -1;
+	game->game_mode = -1;
+	game->profondeur = -1;
+	game->multi_players = -1;
 	return (game);
 }
 
-int			**fill_grid(int row, int column)
+int			**fill_grid(int line, int column)
 {
 	int	**grid;
 	int	i;
 
-	grid = (int**)malloc(sizeof(int*) * (row + 1));
+	grid = (int**)malloc(sizeof(int*) * (line + 1));
 	if (!grid)
 		return (NULL);
-	grid[row] = NULL;
-	while (--row >= 0)
+	grid[line] = NULL;
+	while (--line >= 0)
 	{
-		grid[row] = (int*)malloc(sizeof(int) * column);
-		if (!grid[row])
+		grid[line] = (int*)malloc(sizeof(int) * column);
+		if (!grid[line])
 			return (NULL);
 		i = 0;
 		while (i < column)
 		{
-			grid[row][i] = 0;
+			grid[line][i] = 0;
 			i++;
 		}
 	}
