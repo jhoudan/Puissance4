@@ -14,7 +14,6 @@
 int				main(void)
 {
 	t_game	*game;
-	int		input;
 
 	if (!(game = init_game()))
 		return (-1);
@@ -26,7 +25,7 @@ int				main(void)
 		return (-1);
 	}
 	draw_grid(game);
-	input = get_player_input(game);
+	multi_player(game);
 	free_game(game);
 	return (0);
 }
