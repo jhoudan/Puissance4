@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:26:04 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 14:38:17 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void			free_game(t_game *game);
 */
 int				take_all_param_to_begin(t_game *game);
 int				**fill_grid(int row, int column);
-int				delete_grid(int **grid, int row);
 
 /*
 ** |----------------------------------------------------------------------------
