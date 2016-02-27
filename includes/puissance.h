@@ -6,6 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
+/*   Updated: 2016/02/27 21:17:35 by mvarzari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +18,8 @@
 # include <unistd.h>
 # include <time.h>
 # include <stdbool.h>
-# include <term.h>
 # include <fcntl.h>
+# include <ncurses.h>
 # include <errno.h>
 
 # define WIN_VALUE		10000
@@ -125,5 +126,11 @@ t_game			*copy_struct_game(t_game *original);
 */
 
 void			draw_grid(t_game *game);
+
+
+/*
+** ncurses
+*/
+void			ncurses_init(t_game *game);
 
 #endif

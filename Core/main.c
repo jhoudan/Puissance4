@@ -14,6 +14,7 @@
 int				main(void)
 {
 	t_game	*game;
+	int		input;
 
 	if (!(game = init_game()))
 		return (-1);
@@ -24,6 +25,8 @@ int				main(void)
 		free(game);
 		return (-1);
 	}
+	// ncurses_init(game);
+	input = get_player_input(game);
 	draw_grid(game);
 	if (game->multi_players == 1)
 	{
