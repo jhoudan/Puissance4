@@ -27,6 +27,7 @@ typedef struct	s_game
 	int			line;
 	int			**grid;
 	int			ia;
+	int			game_mode;
 }				t_game;
 
 /*

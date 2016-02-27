@@ -18,11 +18,7 @@ int				main(void)
 	int		input;
 
 	game = init_game();
-	if (take_all_param_to_begin(game) == -1)
-	{
-		free_game(game);
-		return (-1);
-	}
+	take_all_param_to_begin(game);
 	if (!(game->grid = fill_grid(game->line, game->column)))
 	{
 		free(game);
