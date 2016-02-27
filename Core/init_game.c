@@ -55,7 +55,7 @@ static int 		select_line(t_game *game)
 	ft_putstr("\033[33mEnter number of line :\033[0m ");
 	get_next_line(0, &buff);
 	game->line = get_number(buff);
-	if (game->line < 6)
+	if (game->line < 6 || game->line > 50)
 	{
 		ft_error("\033[31m[PARSE ERROR]\033[0m : ",
 			buff, "\n\033[31mIs not a valid");
@@ -70,8 +70,8 @@ static int 		select_line(t_game *game)
 int				take_all_param_to_begin(t_game *game)
 {
 	if (select_column(game) == -1)
-		take_all_param_to_begin(game);
+		return (-1);
 	if (select_line(game) == -1)
-		take_all_param_to_begin(game);
+		return (-1);
 	return (0);	
 }
