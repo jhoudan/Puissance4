@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 12:43:15 by mdezitte         ###   ########.fr       */
+/*   Updated: 2016/02/27 12:48:11 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_game	*init_game(void)
 	t_game *game;
 
 	game = (t_game *)malloc(sizeof(t_game));
-	game->collumn = -1;
+	game->column = -1;
 	game->line = -1;
 	return (game);
 }
@@ -62,15 +62,15 @@ int				main(void)
 	int		result;
 
 	game = init_game();
-	ft_putendl("Enter number of collumn [7 - 99] :");
+	ft_putendl("Enter number of column [7 - 99] :");
 	get_next_line(0, &buff);
-	game->collumn = get_number(buff);
+	game->column = get_number(buff);
 	ft_strdel(&buff);
 	ft_putendl("Enter number of line [6 - 99] :");
 	get_next_line(0, &buff);
 	game->line = get_number(buff);
 	ft_strdel(&buff);
-	if (game->line < 6 || game->collumn < 7)
+	if (game->line < 6 || game->column < 7)
 	{
 		ft_putendl_fd("Parse error, enter number [X - 99] thanks", 2);
 		free_game(game);
