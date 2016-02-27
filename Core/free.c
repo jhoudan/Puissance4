@@ -20,9 +20,11 @@ static int	delete_grid(int **grid, int row)
 	while (i < row)
 	{
 		free(grid[i]);
+		grid[i] = NULL;
 		i++;
 	}
 	free(grid);
+	grid = NULL;
 	return (1);
 }
 
