@@ -50,16 +50,17 @@ int			get_player_input(t_game *game)
 	while (42)
 	{
 		ask_for_input(game);
-		get_next_line(STDIN_FILENO, &line);
+		get_next_line(0, &line);
 		if (line && ft_isnumber(line))
 		{
 			input = ft_atoi(line);
 			if (is_valid_input(input, game))
+			{
+				ft_strdel(&line);
 				break ;
+			}
 		}
 		ft_strdel(&line);
 	}
-	if (line)
-		ft_strdel(&line);
 	return (input);
 }
