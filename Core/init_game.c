@@ -12,21 +12,31 @@
 
 #include "puissance.h"
 
-static int		get_number(char *buff)
+static void		select_difficulty(t_game *game)
 {
-	int		i;
+	char	*buff;
 
-	i = 0;
-	if (ft_strlen(buff) > 2)
-		return (-1);
-	while (buff[i])
+	while (42)
 	{
-		if (ft_isdigit(buff[i]) == 0)
-			return (-1);
-		i++;
+		ft_putendl("\033[33mChoise your difficulty mode :");
+		ft_putstr("Enter [\033[32mnormal\033[33m] or ");
+		ft_putstr("[\033[32mhard\033[33m] :");
+		buff = read_one_line(0);
+		if (ft_strcmp(buff, "normal") == 0)
+		{
+			game->profondeur = 3;
+			ft_strdel(&buff);
+			break ;
+		}
+		if (ft_strcmp(buff, "hard") == 0)
+		{
+			game->profondeur = 5;
+			ft_strdel(&buff);
+			break ;
+		}
+		ft_error("\033[31m[PARSE ERROR] : ", buff, " not valid\n");
+		ft_strdel(&buff);
 	}
-	i = ft_atoi(buff);
-	return (i);
 }
 
 static void		select_display_mode(t_game *game)
@@ -36,7 +46,8 @@ static void		select_display_mode(t_game *game)
 	while (42)
 	{
 		ft_putendl("\033[33mChoise your display mode :");
-		ft_putstr("Enter [shell] for shell mode [graphic] for graphic mode :");
+		ft_putstr("Enter [\033[32mshell\033[33m] for shell mode ");
+		ft_putstr("[\033[32mgraphic\033[33m] for graphic mode :");
 		buff = read_one_line(0);
 		if (ft_strcmp(buff, "shell") == 0)
 		{
@@ -107,8 +118,13 @@ int				take_all_param_to_begin(t_game *game)
 {
 	select_column(game);
 	select_line(game);
+	select_difficulty(game);
 	select_display_mode(game);
 	srand(time(NULL));
 	game->ia = (rand() % 2) + 1;
+	if (game->ia == 1)
+		ft_putendl("\033[31mIA Start a Game\033[0m");
+	if (game->ia == 2)
+		ft_putendl("\033[31mYou Start a Game\033[0m");
 	return (0);
 }

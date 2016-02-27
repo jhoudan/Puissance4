@@ -24,6 +24,8 @@ CORE = alloc_struct.c \
 
 CHECK = checker.c \
 
+TOOLS = tools.c
+
 NCURSES = 
 
 ifdef DEBUG
@@ -41,7 +43,9 @@ SRC_CHECK = $(addprefix Check/, $(CHECK))
 
 SRC_NCURSES = $(addprefix Ncurses/, $(NCURSES))
 
-SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP)
+SRC_TOOLS = $(addprefix Tools/, $(TOOLS))
+
+SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_TOOLS)
 
 OBJ = $(SRC:%.c=.tmp/%.o)
 
@@ -56,6 +60,7 @@ prepare:
 		mkdir -p .tmp/Core
 		mkdir -p .tmp/Check
 		mkdir -p .tmp/Termcap
+		mkdir -p .tmp/Tools
 
 norm:
 		norminette $(SRC) $(HEADER)

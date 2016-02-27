@@ -31,7 +31,7 @@ typedef struct	s_game
 	int			**grid;
 	int			ia;
 	int			game_mode;
-	int			fd;
+	int			profondeur;
 }				t_game;
 
 /*
@@ -83,6 +83,8 @@ int				get_player_input(t_game *game);
 ** |                                                                           |
 ** |----------------------------------------------------------------------------
 */
+
 char			*read_one_line(int fd);
+int				get_number(char *buff);
 
 #endif
