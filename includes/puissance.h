@@ -49,6 +49,8 @@ typedef struct	s_game
 ** |----------------------------------------------------------------------------
 */
 
+int		multi_player(t_game *game);
+
 /*
 ** alloc_struct.c
 */
