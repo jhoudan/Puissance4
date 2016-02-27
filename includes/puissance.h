@@ -6,7 +6,6 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 17:22:06 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +23,8 @@
 
 # define WIN_VALUE		10000
 
+# define RED_DOT "\e[31mo\e[0m"
+# define YELLOW_DOT "\e[33mo\e[0m"
 /*
 ** Structure principal
 */
@@ -35,6 +36,7 @@ typedef struct	s_game
 	int			ia;
 	int			game_mode;
 	int			profondeur;
+	int			multi_players;
 }				t_game;
 
 /*
@@ -65,6 +67,11 @@ void			free_game(t_game *game);
 ** init_game.c
 */
 int				take_all_param_to_begin(t_game *game);
+
+/*
+** init_game_2.c
+*/
+void			select_multiplayers(t_game *game);
 
 /*
 ** |----------------------------------------------------------------------------
@@ -105,4 +112,13 @@ void			put_in_grid(t_game *game, int put_in);
 t_game			*copy_struct_game(t_game *original);
 
 
+/*
+** |----------------------------------------------------------------------------
+** |                                                                           |
+** |                                DISPLAY                                    |
+** |                                                                           |
+** |----------------------------------------------------------------------------
+*/
+
+void			draw_grid(t_game *game);
 #endif

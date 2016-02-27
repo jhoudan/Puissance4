@@ -24,6 +24,7 @@ static int	delete_grid(int **grid, int row)
 		i++;
 	}
 	free(grid);
+	grid = NULL;
 	return (1);
 }
 
