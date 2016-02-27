@@ -12,7 +12,7 @@
 #ifndef PUISSANCE_H
 # define PUISSANCE_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <time.h>
@@ -38,6 +38,7 @@ typedef struct	s_game
 	int			ia;
 	int			game_mode;
 	int			profondeur;
+	int			multi_players;
 }				t_game;
 
 /*
@@ -70,6 +71,11 @@ void			free_game(t_game *game);
 int				take_all_param_to_begin(t_game *game);
 
 /*
+** init_game_2.c
+*/
+void			select_multiplayers(t_game *game);
+
+/*
 ** |----------------------------------------------------------------------------
 ** |                                                                           |
 ** |                                  CHECK                                    |
@@ -97,11 +103,15 @@ int				get_number(char *buff);
 **	Recurs_min_max
 */
 int				get_line_pos_when_put_the_piece(t_game grid, int column);
-int				*get_valid_columns(t_game game);
-int				get_nb_valide_columns(t_game *game);
+int				*get_valid_column(t_game game);
+int				get_weight_pos_tab(t_game *game,
+					int **weight_pos_tab, int player);
+int				find_value_to_ret(t_game *game, int *values, int player);
+int				recurs_get_column(t_game *game, int depth, int player);
 
 
 void			put_in_grid(t_game *game, int put_in, int identifier);
+t_game			*copy_struct_game(t_game *original);
 
 /*
 ** |----------------------------------------------------------------------------

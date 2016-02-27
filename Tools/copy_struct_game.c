@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_valid_column.c                                 :+:      :+:    :+:   */
+/*   copy_struct_game.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mressier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 16:16:12 by mressier          #+#    #+#             */
-/*   Updated: 2016/02/27 16:16:15 by mressier         ###   ########.fr       */
+/*   Created: 2016/02/27 18:59:13 by mressier          #+#    #+#             */
+/*   Updated: 2016/02/27 18:59:19 by mressier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/puissance.h"
 
-/*
-**	Renvoie un tableau d'int.
-**	Chaque case correspond a une colonne.
-**	Si la case de ret est a 0, la ligne est pleine, on ne peut plus rien
-**	mettre dedans.
-*/
-
-int		*get_valid_column(t_game game)
+t_game		*copy_struct_game(t_game *original)
 {
-	int		*ret;
-	int		i_column;
+	t_game		*copy;
+	int			i_line;
 
-	ret = ft_memalloc(sizeof(int) * game.column);
-	if (ret == NULL)
+	i_line = 0;
+	copy = init_game();
+	if (copy == NULL)
 		return (NULL);
-	i_column = 0;
-	while (i_column < game.column)
+	copy->column = original->column;
+	copy->line = original->line;
+	copy->grid = fill_grid(copy->line, copy->column);
+	if (copy->grid == NULL)
+		return (NULL);
+	while (i_line < original->line)
 	{
-		if (game.grid[0][i_column] == 0)
-			ret[i_column] = 1;
-		i_column++;
+		copy->grid[i_line] = (int *)ft_memcpy(copy->grid[i_line],
+				original->grid[i_line], copy->column);
+		i_line++;
 	}
-	return (ret);
+	return (copy);
 }
