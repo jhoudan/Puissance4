@@ -18,6 +18,7 @@ CORE = alloc_struct.c \
 		error.c \
 		free.c \
 		init_game.c \
+		init_game_2.c \
 		main.c
 
 

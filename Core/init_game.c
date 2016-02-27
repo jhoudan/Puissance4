@@ -103,11 +103,18 @@ static void		select_line(t_game *game)
 		if (!(buff = read_one_line(0)))
 			return ;
 		game->line = get_number(buff);
-		if (game->line < 6 || game->line > 50)
+		if (game->game_mode == 1 && (game->line < 6 || game->line > 50))
 		{
 			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
 				buff, "\n\033[31mIs not a valid");
-			ft_putendl_fd(" argument take [6 - 50]", 2);
+			ft_putendl_fd(" argument take [6 - 40]", 2);
+			ft_strdel(&buff);
+		}
+		else if (game->game_mode == 2 && (game->line < 6 || game->line > 13))
+		{
+			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
+				buff, "\n\033[31mIs not a valid");
+			ft_putendl_fd(" argument take [6 - 13]", 2);
 			ft_strdel(&buff);
 		}
 		else
@@ -120,15 +127,20 @@ static void		select_line(t_game *game)
 
 int				take_all_param_to_begin(t_game *game)
 {
+	select_display_mode(game);
+	if (game->game_mode == -1)
+		return (1);
+	select_difficulty(game);
+	if (game->profondeur == -1)
+		return (1);
 	select_column(game);
 	if (game->column == -1)
 		return (1);
 	select_line(game);
-	select_difficulty(game);
 	if (game->line == -1)
 		return (1);
-	select_display_mode(game);
-	if (game->game_mode == -1)
+	select_multiplayers(game);
+	if (game->multi_players == - 1)
 		return (1);
 	srand(time(NULL));
 	game->ia = (rand() % 2) + 1;

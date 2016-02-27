@@ -21,6 +21,8 @@ t_game		*init_game(void)
 	game->column = -1;
 	game->line = -1;
 	game->game_mode = -1;
+	game->profondeur = -1;
+	game->multi_players = -1;
 	return (game);
 }
 
