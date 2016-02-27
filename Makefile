@@ -24,8 +24,7 @@ CORE = alloc_struct.c \
 
 CHECK = checker.c \
 
-TERMCAP = get_values.c \
-		init_terminal.c
+NCURSES = 
 
 ifdef DEBUG
 FLAGS = -Wall -Werror -Wextra -g
@@ -40,7 +39,7 @@ SRC_CORE = $(addprefix Core/, $(CORE))
 
 SRC_CHECK = $(addprefix Check/, $(CHECK))
 
-SRC_TERMCAP = $(addprefix Termcap/, $(TERMCAP))
+SRC_NCURSES = $(addprefix Ncurses/, $(NCURSES))
 
 SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP)
 
