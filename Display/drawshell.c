@@ -6,7 +6,7 @@
 /*   By: mdumouli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 14:04:05 by mdumouli          #+#    #+#             */
-/*   Updated: 2016/02/27 21:05:42 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 21:40:34 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ void draw_border(t_game game)
 	while (x++ < (game.column * 3))
 		ft_putchar(' ');
 	ft_putstr(" \e[0m\n");
+}
+
+void display_col(int col)
+{
+	int i;
+
+	i = 0;
+	while (i < col)
+	{
+		ft_putstr("\e[100m \e[0m");
+		if (i < 10)
+			ft_putchar('0');
+		ft_putnbr(i);
+		i++;
+	}
+	ft_putstr("\e[100m \e[0m");
+	ft_putchar('\n');
 }
 
 void draw_grid(t_game *game)
@@ -53,5 +70,7 @@ void draw_grid(t_game *game)
 		}
 		((y / 2) < (*game).line) ? ft_putstr("\e[100m \e[0m\n") : 0;
 	}
+	draw_border(*game);
+	display_col(game->column);
 	draw_border(*game);
 }

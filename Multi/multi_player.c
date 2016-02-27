@@ -66,17 +66,18 @@ int		multi_player(t_game *game)
 	int	max;
 	int	i;
 
-	max = game->column * game->line;
 	i = -1;
+	max = game->column * game->line;
 	while (++i < max)
 	{
+		draw_grid(game);
 		input = get_player_input(game);
 		if (i % 2 == 0)
 		{
 			put_in_grid(game, input, IA);
 			if (check_if_win(game, input, IA) == 1)
 			{
-				ft_putendl("YOU WIN");
+				ft_putendl("\033[34mPLAYER 1 WIN\033[0m");
 				return (0);
 			}
 		}
@@ -85,13 +86,12 @@ int		multi_player(t_game *game)
 			put_in_grid(game, input, PLAYER);
 			if (check_if_win(game, input, PLAYER) == 1)
 			{
-				ft_putendl("YOU WIN");
+				ft_putendl("\033[34mPLAYER 2 WIN\033[0m");
 				return (0);
 			}
 		}
-		draw_grid(game);
 	}
 	if (i == max - 1)
-		ft_putstr("Match nul !\n");
+		ft_putstr("\033[34mMatch nul !\033[0m\n");
 	return (1);
 }
