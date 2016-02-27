@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:26:28 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:38:03 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:41:14 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_game		*init_game(void)
 {
 	t_game *game;
 
-	game = (t_game *)malloc(sizeof(t_game));
+	if (!(game = (t_game *)malloc(sizeof(t_game))))
+		return (NULL);
 	game->column = -1;
 	game->line = -1;
 	return (game);
