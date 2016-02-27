@@ -19,6 +19,25 @@
 **	mettre dedans.
 */
 
+int		get_nb_valide_columns(t_game *game)
+{
+	int		*valide_columns;
+	int		ret;
+	int		i;
+
+	valide_columns = get_valide_columns(game);
+	ret = 0;
+	i = 0;
+	if (valide_columns == NULL)
+		return (-1);
+	while (i < game->columns)
+	{
+		ret += (valide_columns[i]) ? 1 : 0;
+		i++;
+	}
+	return (i);
+}
+
 int		*get_valid_columns(t_game game)
 {
 	int		*ret;
