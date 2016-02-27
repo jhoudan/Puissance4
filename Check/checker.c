@@ -41,7 +41,7 @@ static int	print_grid_limit(t_game *game)
 	return (1);
 }
 
-int			get_input_player(t_game *game)
+int			get_player_input(t_game *game)
 {
 	int		input;
 	char	*line;
