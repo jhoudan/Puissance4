@@ -2,8 +2,16 @@
 
 static int	is_valid_input(int input, t_game *game)
 {
-	if (input < 0 || input >= game->column || game->grid[0][input] != 0)
+	if (input < 0 || input >= game->column)
+	{
+		ft_putendl("Is out of range");
 		return (0);
+	}
+	else if (game->grid[0][input] != 0)
+	{
+		ft_putendl("Is already full");
+		return (0);
+	}
 	return (1);
 }
 
@@ -15,8 +23,11 @@ static int	ft_isnumber(char *str)
 		return (0);
 	while (*str)
 	{
-		if (!ft_isdigit(*str) && *str != '\n')
+		if (!ft_isdigit(*str))
+		{
+			ft_putendl("Is not a number");
 			return (0);
+		}
 		str++;
 	}
 	return (1);
@@ -51,8 +62,5 @@ int			get_input_player(t_game *game)
 	}
 	if (line)
 		ft_strdel(&line);
-	ft_putstr("You picked ");
-	ft_putnbr(input);
-	ft_putchar('\n');
 	return (input);
 }
