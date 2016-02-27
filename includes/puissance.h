@@ -21,6 +21,8 @@
 # include <term.h>
 # include <fcntl.h>
 
+# define WIN_VALUE		10000
+
 /*
 ** Structure principal
 */
@@ -86,7 +88,13 @@ int				get_player_input(t_game *game);
 
 char			*read_one_line(int fd);
 int				get_number(char *buff);
+
+/*
+**	Recurs_min_max
+*/
 int				get_line_pos_when_put_the_piece(t_game grid, int column);
 int				*get_valid_columns(t_game game);
+int				get_nb_valide_columns(t_game *game);
+
 
 #endif
