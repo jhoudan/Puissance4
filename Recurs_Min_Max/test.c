@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mressier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:28:03 by jhoudan          ###   ########.fr       */
+/*   Created: 2016/02/27 15:42:27 by mressier          #+#    #+#             */
+/*   Updated: 2016/02/27 15:46:39 by mressier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "puissance.h"
+#include "../includes/puissance.h"
 
-int				main(void)
+int		main(void)
 {
-	t_game	*game;
-	int		input;
+	t_game	*game;	
 
 	game = init_game();
-	take_all_param_to_begin(game);
-	if (!(game->grid = fill_grid(game->line, game->column)))
-	{
-		free(game);
-		return (-1);
-	}
-	input = get_player_input(game);
-	free_game(game);
+	game->column = 5;
+	game->row = 4;
+	game->grid = fill_grid(game->row, game->column);
+	game->grid[1][2];
+	ft_putnbrendl(game, 2);
 	return (0);
 }

@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   put_in_grid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvarzari <mvarzari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 13:25:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:37:55 by jhoudan          ###   ########.fr       */
+/*   Created: 2016/02/27 14:44:12 by mvarzari          #+#    #+#             */
+/*   Updated: 2016/02/27 15:14:03 by mvarzari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance.h"
 
-static int	delete_grid(int **grid, int row)
+void	put_in_grid(t_game *game, int put_in)
 {
-	int	i;
+	int	lines;
 
-	i = 0;
-	while (i < row)
-	{
-		free(grid[i]);
-		grid[i] = NULL;
-		i++;
-	}
-	free(grid);
-	grid = NULL;
-	return (1);
-}
-
-void		free_game(t_game *game)
-{
-	delete_grid(game->grid, game->line);
-	free(game);
-	game = NULL;
+	lines = game->line;
+	lines--;
+	while (game->grid[lines][put_in] != 0)
+	   lines--;
+	game->grid[lines][put_in] = game->ia;	
 }

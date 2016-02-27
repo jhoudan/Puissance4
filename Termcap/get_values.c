@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   get_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 13:25:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:37:55 by jhoudan          ###   ########.fr       */
+/*   Created: 2016/02/27 15:11:12 by mdezitte          #+#    #+#             */
+/*   Updated: 2016/02/27 15:11:13 by mdezitte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance.h"
 
-static int	delete_grid(int **grid, int row)
+bool	is_echap(const char *buffer)
 {
-	int	i;
-
-	i = 0;
-	while (i < row)
-	{
-		free(grid[i]);
-		grid[i] = NULL;
-		i++;
-	}
-	free(grid);
-	grid = NULL;
-	return (1);
+	if (buffer[0] == 27 && buffer[1] == 0 && buffer[2] == 0)
+		return (true);
+	else
+		return (false);
 }
 
-void		free_game(t_game *game)
+bool	is_enter(const char *buffer)
 {
-	delete_grid(game->grid, game->line);
-	free(game);
-	game = NULL;
+	if (buffer[0] == 10 && buffer[1] == 0 && buffer[2] == 0)
+		return (true);
+	else
+		return (false);
+}
+
+bool	is_alpha(const char *buffer)
+{
+	if (buffer[0] > 47 && buffer[0] < 58 && buffer[1] == 0 && buffer[2] == 0)
+		return (true);
+	else
+		return (false);
 }
