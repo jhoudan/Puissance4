@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:16:11 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:45:18 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ int				get_player_input(t_game *game);
 
 char			*read_one_line(int fd);
 int				get_number(char *buff);
+int				get_line_pos_when_put_the_piece(t_game grid, int column);
+int				*get_valid_columns(t_game game);
 
 #endif

@@ -13,18 +13,22 @@
 #include "../includes/puissance.h"
 
 /*
-**	Return 	
+**	Renvoie la position littérale de l'endroit ou la piece va se poser
+**	dans la colonne. -1 si la colonne est pleine ou en cas d'erreur (ce que je
+**	ne souhaite pas)
 */
 
-int		get_line_pos(t_game grid, int column)
+int		get_line_pos_when_put_the_piece(t_game game, int column)
 {
 	int		line;
 
 	line = 0;
-	while (line < grid.line)
+	if (column < 0 || column > game.column)
+		return (-1);
+	while (line < game.line)
 	{
-		if (grid.grid[column][line] != 0)
-			return (line == 0 ? -1 : line);
+		if (game.grid[line][column] != 0)
+			return (line == 0 ? -1 : line - 1);
 		line++;
 	}
 	return (line - 1);
