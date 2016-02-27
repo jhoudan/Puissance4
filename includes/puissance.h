@@ -6,6 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
+/*   Updated: 2016/02/27 21:17:35 by mvarzari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +18,8 @@
 # include <unistd.h>
 # include <time.h>
 # include <stdbool.h>
-# include <term.h>
 # include <fcntl.h>
+# include <ncurses.h>
 # include <errno.h>
 
 # define WIN_VALUE		10000
@@ -110,7 +111,8 @@ int				get_weight_pos_tab(t_game *game,
 					int **weight_pos_tab, int player);
 int				find_value_to_ret(t_game *game, int *values, int player);
 int				recurs_get_column(t_game *game, int depth, int player);
-
+int				get_column_to_play(t_game *game);
+int				grid_is_full(t_game *game);
 
 void			put_in_grid(t_game *game, int put_in, int identifier);
 t_game			*copy_struct_game(t_game *original);
@@ -124,5 +126,11 @@ t_game			*copy_struct_game(t_game *original);
 */
 
 void			draw_grid(t_game *game);
+
+
+/*
+** ncurses
+*/
+void			ncurses_init(t_game *game);
 
 #endif

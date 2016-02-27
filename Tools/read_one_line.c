@@ -6,7 +6,7 @@
 /*   By: jhoudan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 17:11:21 by jhoudan           #+#    #+#             */
-/*   Updated: 2016/02/27 17:38:05 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 20:44:05 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static char	*print_read_error(char *str)
 {
 	ft_strdel(&str);
 	ft_putstr("\n\033[31mPuissance4: critical error -> ");
-	str = strerror(errno);
-	ft_putstr(str);
-	ft_strdel(&str);
-	ft_putstr("\033[0m\n");
+	if (errno == EBADF)
+		ft_putstr("Bad file descriptor\033[0m\n");
+	else if (errno == EINTR)
+		ft_putstr("Interrupt syscall. Please don't do that.\033[0m\n");
 	return (NULL);
 }
 
