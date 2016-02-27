@@ -6,7 +6,7 @@
 #    By: mdumouli <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/27 19:04:28 by mdumouli          #+#    #+#              #
-#    Updated: 2016/02/27 19:04:43 by mdumouli         ###   ########.fr        #
+#    Updated: 2016/02/27 19:57:14 by jhoudan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ DISPLAY = drawshell.c \
 CHECK = checker.c \
 
 TOOLS = tools.c \
-		read_one_line.c 
+		read_one_line.c
+
+MULTI = multi_player.c
 
 NCURSES = 
 
@@ -50,7 +52,9 @@ SRC_DISPLAY = $(addprefix Display/, $(DISPLAY))
 
 SRC_TOOLS = $(addprefix Tools/, $(TOOLS))
 
-SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_TOOLS) $(SRC_DISPLAY)
+SRC_MULTI  = $(addprefix Multi/, $(MULTI))
+
+SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_TOOLS) $(SRC_DISPLAY) $(SRC_MULTI)
 
 OBJ = $(SRC:%.c=.tmp/%.o)
 
@@ -67,6 +71,7 @@ prepare:
 		mkdir -p .tmp/Termcap
 		mkdir -p .tmp/Display
 		mkdir -p .tmp/Tools
+		mkdir -p .tmp/Multi
 
 norm:
 		norminette $(SRC) $(HEADER)

@@ -6,31 +6,21 @@
 /*   By: mdumouli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 14:04:05 by mdumouli          #+#    #+#             */
-/*   Updated: 2016/02/27 18:57:40 by mdumouli         ###   ########.fr       */
+/*   Updated: 2016/02/27 19:46:03 by mdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance.h"
 
-void draw_border(t_game game, int nb)
+void draw_border(t_game game)
 {
 	int x;
 
 	x = 1;
-	if (nb == 0)
-	{
-		ft_putchar('/');
-		while (x++ < (game.column * 2))
-			ft_putchar('-');
-		ft_putstr("\\\n");
-	}
-	else
-	{
-		ft_putchar('\\');
-		while (x++ < (game.column * 2))
-			ft_putchar('-');
-		ft_putstr("/\n");
-	}
+	ft_putstr("\e[100m ");
+	while (x++ < (game.column * 2))
+		ft_putchar(' ');
+	ft_putstr(" \e[0m\n");
 }
 
 void draw_grid(t_game *game)
@@ -40,11 +30,11 @@ void draw_grid(t_game *game)
 
 	y = 0;
 	ft_putstr("\e[0m");
-	draw_border(*game, 0);
+	draw_border(*game);
 	while ((y++ / 2) < (*game).line)
 	{
 		x = 0;
-		((y / 2) < (*game).line) ? ft_putchar('|') : 0;
+		((y / 2) < (*game).line) ? ft_putstr("\e[0;100m \e[0m") : 0;
 		while (x < (*game).column && y % 2 == 1)
 		{
 			if ((*game).grid[y / 2][x] == 1)
@@ -52,16 +42,16 @@ void draw_grid(t_game *game)
 			else if ((*game).grid[y / 2][x] == 2)
 				ft_putstr(YELLOW_DOT);
 			else
-				ft_putchar (' ');
-			(x == (*game).column - 1) ? 0 : ft_putchar('|');
+				ft_putstr("\e[0m ");
+			(x == (*game).column - 1) ? 0 : ft_putstr("\e[100m \e[0m");
 			++x;
 		}
 		while (x++ < (*game).column && y % 2 == 0 && (y / 2) < (*game).line)
 		{
-			ft_putchar('-');
-			(x == (*game).column) ? 0 : ft_putchar('+');
+			ft_putstr("\e[100m \e[0m");
+			(x == (*game).column) ? 0 : ft_putstr("\e[100m \e[0m");
 			}
-		((y / 2) < (*game).line) ? ft_putstr("|\n") : 0;
+		((y / 2) < (*game).line) ? ft_putstr("\e[100m \e[0m\n") : 0;
 	}
-	draw_border(*game, 1);
+	draw_border(*game);
 }

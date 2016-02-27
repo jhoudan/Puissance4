@@ -22,9 +22,11 @@
 # include <errno.h>
 
 # define WIN_VALUE		10000
+# define IA				1
+# define PLAYER			2
 
-# define RED_DOT "\e[31mo\e[0m"
-# define YELLOW_DOT "\e[33mo\e[0m"
+# define RED_DOT "\e[0;41m \e[0m"
+# define YELLOW_DOT "\e[0;43m \e[0m"
 /*
 ** Structure principal
 */
@@ -46,6 +48,8 @@ typedef struct	s_game
 ** |                                                                           |
 ** |----------------------------------------------------------------------------
 */
+
+int		multi_player(t_game *game);
 
 /*
 ** alloc_struct.c
@@ -109,9 +113,8 @@ int				recurs_get_column(t_game *game, int depth, int player);
 int				get_column_to_play(t_game *game);
 int				grid_is_full(t_game *game);
 
-void			put_in_grid(t_game *game, int put_in);
+void			put_in_grid(t_game *game, int put_in, int identifier);
 t_game			*copy_struct_game(t_game *original);
-
 
 /*
 ** |----------------------------------------------------------------------------
@@ -122,4 +125,5 @@ t_game			*copy_struct_game(t_game *original);
 */
 
 void			draw_grid(t_game *game);
+
 #endif
