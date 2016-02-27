@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_line_pos.c                                     :+:      :+:    :+:   */
+/*   get_valid_column.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mressier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 15:28:11 by mressier          #+#    #+#             */
-/*   Updated: 2016/02/27 15:28:12 by mressier         ###   ########.fr       */
+/*   Created: 2016/02/27 16:16:12 by mressier          #+#    #+#             */
+/*   Updated: 2016/02/27 16:16:15 by mressier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/puissance.h"
 
 /*
-**	Renvoie la position littérale de l'endroit ou la piece va se poser
-**	dans la colonne. -1 si la colonne est pleine ou en cas d'erreur (ce que je
-**	ne souhaite pas)
+**	Renvoie un tableau d'int.
+**	Chaque case correspond a une colonne.
+**	Si la case de ret est a 0, la ligne est pleine, on ne peut plus rien
+**	mettre dedans.
 */
 
-int		get_line_pos(t_game game, int column)
+int		*get_valid_column(t_game game)
 {
-	int		line;
+	int		*ret;
+	int		i_column;
 
-	line = 0;
-	if (column < 0 || column > game.column)
-		return (-1);
-	while (line < game.line)
+	ret = ft_memalloc(sizeof(int) * game.column);
+	i_column = 0;
+	while (i_column < game.column)
 	{
-		if (game.grid[line][column] != 0)
-			return (line == 0 ? -1 : line - 1);
-		line++;
+		if (game.grid[0][i_column] == 0)
+			ret[i_column] = 1;
+		i_column++;
 	}
-	return (line - 1);
+	return (ret);
 }
