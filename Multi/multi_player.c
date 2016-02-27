@@ -17,5 +17,6 @@ int		multi_player(t_game *game)
 			put_in_grid(game, input, PLAYER);
 		draw_grid(game);
 	}
+	ft_putstr("Match nul !\n");
 	return (1);
 }
