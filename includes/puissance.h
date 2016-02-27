@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:45:18 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 17:22:06 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 # include <term.h>
 # include <fcntl.h>
+# include <errno.h>
 
 # define WIN_VALUE		10000
 
@@ -96,5 +97,7 @@ int				get_line_pos_when_put_the_piece(t_game grid, int column);
 int				*get_valid_columns(t_game game);
 int				get_nb_valide_columns(t_game *game);
 
+
+void			put_in_grid(t_game *game, int put_in);
 
 #endif
