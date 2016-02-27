@@ -20,11 +20,11 @@ static int	check_line(t_game *game, int out, int line, int id)
 
 	i = 1;
 	nb_piece = 1;
-	while (out + i < game->column && game->grid[line][out + 1] == id)
+	while (out + i < game->column && game->grid[line][out + i] == id)
 		i++;
 	nb_piece += i - 1;
 	i = 1;
-	while (out - i >= 0 && game->grid[line][out - 1] == id)
+	while (out - i >= 0 && game->grid[line][out - i] == id)
 		i++;
 	nb_piece += i - 1;
 	return (nb_piece);
@@ -49,13 +49,13 @@ static int	check_if_win(t_game *game, int out, int id)
 	int line;
 
 	line = take_last_piece(game, out);
-	if (check_column(game, out, line, id) == 1)
+	if (check_column(game, out, line, id) == 4)
 		return (1);
-	if (check_line(game, out, line, id) == 1);
+	if (check_line(game, out, line, id) == 4)
 		return (1);
-	if (check_bot_left(game, out , line, id) == 1);
+	if (check_bot_left(game, out , line, id) == 4)
 		return (1);
-	if (check_bot_right(game, out, line, id) == 1);
+	if (check_bot_right(game, out, line, id) == 4)
 		return (1);
 	return (0);
 }
@@ -72,9 +72,23 @@ int		multi_player(t_game *game)
 	{
 		input = get_player_input(game);
 		if (i % 2 == 0)
+		{
 			put_in_grid(game, input, IA);
+			if (check_if_win(game, input, IA) == 1)
+			{
+				ft_putendl("YOU WIN");
+				return (0);
+			}
+		}
 		else
+		{
 			put_in_grid(game, input, PLAYER);
+			if (check_if_win(game, input, PLAYER) == 1)
+			{
+				ft_putendl("YOU WIN");
+				return (0);
+			}
+		}
 		draw_grid(game);
 	}
 	if (i == max - 1)
