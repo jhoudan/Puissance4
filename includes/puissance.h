@@ -23,8 +23,8 @@
 
 # define WIN_VALUE		10000
 
-# define RED_DOT "\e[31mo\e[0m"
-# define YELLOW_DOT "\e[33mo\e[0m"
+# define RED_DOT "\e[0;41m \e[0m"
+# define YELLOW_DOT "\e[0;43m \e[0m"
 /*
 ** Structure principal
 */
