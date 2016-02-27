@@ -24,7 +24,7 @@ int		**fill_grid(int row, int column)
 	return (grid);
 }
 
-int		delete_grid(int **grid, int row, int column)
+int		delete_grid(int **grid, int row)
 {
 	int	i;
 
