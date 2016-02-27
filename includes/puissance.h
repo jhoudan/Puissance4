@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:16:11 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 18:22:44 by mvarzari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <unistd.h>
 # include <time.h>
 # include <stdbool.h>
-# include <term.h>
 # include <fcntl.h>
+# include <ncurses.h>
 
 /*
 ** Structure principal
@@ -84,5 +84,11 @@ int				get_player_input(t_game *game);
 ** |----------------------------------------------------------------------------
 */
 char			*read_one_line(int fd);
+
+
+/*
+** ncurses
+*/
+void			ncurses_init(t_game *game);
 
 #endif

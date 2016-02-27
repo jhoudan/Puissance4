@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:28:03 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:57:05 by mvarzari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int				main(void)
 		free(game);
 		return (-1);
 	}
+	ncurses_init(game);
 	input = get_player_input(game);
 	free_game(game);
 	return (0);

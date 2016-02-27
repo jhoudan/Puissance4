@@ -6,7 +6,7 @@
 #    By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/10 10:00:41 by mressier          #+#    #+#              #
-#    Updated: 2016/02/27 15:07:14 by jhoudan          ###   ########.fr        #
+#    Updated: 2016/02/27 17:05:19 by mvarzari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CORE = alloc_struct.c \
 
 CHECK = checker.c \
 
-NCURSES = 
+NCURSES = ncurses_display.c 
 
 ifdef DEBUG
 FLAGS = -Wall -Werror -Wextra -g
@@ -41,7 +41,7 @@ SRC_CHECK = $(addprefix Check/, $(CHECK))
 
 SRC_NCURSES = $(addprefix Ncurses/, $(NCURSES))
 
-SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP)
+SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_NCURSES)
 
 OBJ = $(SRC:%.c=.tmp/%.o)
 
@@ -55,7 +55,7 @@ exec:
 prepare:
 		mkdir -p .tmp/Core
 		mkdir -p .tmp/Check
-		mkdir -p .tmp/Termcap
+		mkdir -p .tmp/Ncurses
 
 norm:
 		norminette $(SRC) $(HEADER)
@@ -64,7 +64,7 @@ compile_lib:
 		make -C $(LIB)/
 
 $(NAME): $(OBJ)
-		gcc $(FLAGS) $(OBJ) -o $(NAME) -L $(LIB)/ -lft -L /usr/lib/ -ltermcap
+		gcc $(FLAGS) $(OBJ) -o $(NAME) -L $(LIB)/ -lft -L /usr/lib/ -lncurses
 
 compile_p:
 		echo "\n\033[34mCompiling $(NAME) wait...\033[39m"
