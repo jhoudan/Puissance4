@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 12:48:11 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 13:23:38 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int		get_number(char *buff)
 		return (-1);
 	while (buff[i])
 	{
-		if (ft_isdigit(buff[i]) == 0)
+		if (ft_isdigit(buff[i]) == 0 && buff[i] != '\n') // FIX TEMPORAIRE
 			return (-1);
 		i++;
 	}
