@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:42:08 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 17:57:43 by mdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int				main(void)
 		free(game);
 		return (-1);
 	}
+	draw_grid(game);
 	input = get_player_input(game);
 	free_game(game);
 	return (0);
