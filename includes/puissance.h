@@ -22,6 +22,8 @@
 # include <errno.h>
 
 # define WIN_VALUE		10000
+# define IA				1
+# define PLAYER			2
 
 # define RED_DOT "\e[31mo\e[0m"
 # define YELLOW_DOT "\e[33mo\e[0m"
@@ -99,7 +101,7 @@ int				*get_valid_columns(t_game game);
 int				get_nb_valide_columns(t_game *game);
 
 
-void			put_in_grid(t_game *game, int put_in);
+void			put_in_grid(t_game *game, int put_in, int identifier);
 
 /*
 ** |----------------------------------------------------------------------------
@@ -110,4 +112,5 @@ void			put_in_grid(t_game *game, int put_in);
 */
 
 void			draw_grid(t_game *game);
+
 #endif
