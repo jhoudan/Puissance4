@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 13:23:38 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 13:45:44 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void		print_result(int status)
 
 static void		free_game(t_game *game)
 {
+	delete_grid(game->grid, game->line, game->column);
 	free(game);
 	game = NULL;
 }
@@ -77,6 +78,8 @@ int				main(void)
 		return (-1);
 	}
 	result = 0;
+	game->grid = fill_grid(game->line, game->column);
+	get_input_player(game);
 	//result = game_core(game);
 	print_result(result);
 	free_game(game);
