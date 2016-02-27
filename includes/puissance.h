@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 14:13:43 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 14:26:04 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int				delete_grid(int **grid, int row);
 /*
 ** checker.c
 */
-int				get_input_player(t_game *game);
+int				get_player_input(t_game *game);
 
 #endif
