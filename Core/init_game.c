@@ -20,7 +20,7 @@ static void		select_difficulty(t_game *game)
 	{
 		ft_putendl("\033[33mChoise your difficulty mode :");
 		ft_putstr("Enter [\033[32mnormal\033[33m] or ");
-		ft_putstr("[\033[32mhard\033[33m] :\033[0m");
+		ft_putstr("[\033[32mhard\033[33m] : \033[0m");
 		if (!(buff = read_one_line(0)))
 			return ;
 		if (ft_strcmp(buff, "normal") == 0)
@@ -48,7 +48,7 @@ static void		select_display_mode(t_game *game)
 	{
 		ft_putendl("\033[33mChoise your display mode :");
 		ft_putstr("Enter [\033[32mshell\033[33m] for shell mode ");
-		ft_putstr("[\033[32mgraphic\033[33m] for graphic mode :\033[0m");
+		ft_putstr("[\033[32mgraphic\033[33m] for graphic mode : \033[0m");
 		if (!(buff = read_one_line(0)))
 			return ;
 		if (ft_strcmp(buff, "shell") == 0)
