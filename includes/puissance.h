@@ -45,6 +45,7 @@ typedef struct	s_game
 ** alloc_struct.c
 */
 t_game			*init_game(void);
+int				**fill_grid(int row, int column);
 
 /*
 ** error.c
@@ -60,7 +61,6 @@ void			free_game(t_game *game);
 ** init_game.c
 */
 int				take_all_param_to_begin(t_game *game);
-int				**fill_grid(int row, int column);
 
 /*
 ** |----------------------------------------------------------------------------
