@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 15:07:49 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:12:55 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 17:30:08 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	ft_isnumber(char *str)
 
 static int	ask_for_input(t_game *game)
 {
-	ft_putstr("\033[32mPick a column between 0 and ");
+	ft_putstr("\033[32m\nPick a column between 0 and ");
 	ft_putnbr(game->column - 1);
 	ft_putstr(": \033[0m");
 	return (1);

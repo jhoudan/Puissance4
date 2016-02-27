@@ -6,7 +6,7 @@
 #    By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/10 10:00:41 by mressier          #+#    #+#              #
-#    Updated: 2016/02/27 17:19:07 by jhoudan          ###   ########.fr        #
+#    Updated: 2016/02/27 17:22:24 by jhoudan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CORE = alloc_struct.c \
 		error.c \
 		free.c \
 		init_game.c \
+		put_in_grid.c \
 		main.c
 
 
