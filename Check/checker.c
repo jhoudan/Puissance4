@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 15:07:49 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 15:07:51 by mdezitte         ###   ########.fr       */
+/*   Updated: 2016/02/27 16:12:55 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			get_player_input(t_game *game)
 	while (42)
 	{
 		ask_for_input(game);
-		get_next_line(0, &line);
+		line = read_one_line(0);
 		if (line && ft_isnumber(line))
 		{
 			input = ft_atoi(line);

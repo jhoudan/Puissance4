@@ -6,7 +6,7 @@
 #    By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/10 10:00:41 by mressier          #+#    #+#              #
-#    Updated: 2016/02/27 12:43:43 by mdezitte         ###   ########.fr        #
+#    Updated: 2016/02/27 15:07:14 by jhoudan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,13 @@ CORE = alloc_struct.c \
 		error.c \
 		free.c \
 		init_game.c \
+		read_one_line.c \
 		main.c
 
 
-CHECK = checker.c
+CHECK = checker.c \
 
-TERMCAP = get_values.c \
-		init_terminal.c
+NCURSES = 
 
 ifdef DEBUG
 FLAGS = -Wall -Werror -Wextra -g
@@ -39,7 +39,7 @@ SRC_CORE = $(addprefix Core/, $(CORE))
 
 SRC_CHECK = $(addprefix Check/, $(CHECK))
 
-SRC_TERMCAP = $(addprefix Termcap/, $(TERMCAP))
+SRC_NCURSES = $(addprefix Ncurses/, $(NCURSES))
 
 SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP)
 
