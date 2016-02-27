@@ -6,13 +6,13 @@
 /*   By: mdumouli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 14:04:05 by mdumouli          #+#    #+#             */
-/*   Updated: 2016/02/27 15:16:12 by mdumouli         ###   ########.fr       */
+/*   Updated: 2016/02/27 15:29:09 by mdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "drawshell.h"
 
-void draw_border(t_grid grid, int nb)
+void draw_border(t_game game, int nb)
 {
 	int x;
 
@@ -20,14 +20,14 @@ void draw_border(t_grid grid, int nb)
 	if (nb == 0)
 	{
 		ft_putchar('/');
-		while (x++ < (grid.lengh * 2))
+		while (x++ < (game.column * 2))
 			ft_putchar('-');
 		ft_putstr("\\\n");
 	}
 	else
 	{
 		ft_putchar('\\');
-		while (x++ < (grid.lengh * 2))
+		while (x++ < (game.column * 2))
 			ft_putchar('-');
 		ft_putstr("/\n");
 	}

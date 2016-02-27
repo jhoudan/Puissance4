@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawshell.h                                        :+:      :+:    :+:   */
+/*   put_in_grid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdumouli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mvarzari <mvarzari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 14:40:03 by mdumouli          #+#    #+#             */
-/*   Updated: 2016/02/27 15:29:39 by mdumouli         ###   ########.fr       */
+/*   Created: 2016/02/27 14:44:12 by mvarzari          #+#    #+#             */
+/*   Updated: 2016/02/27 15:14:03 by mvarzari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAWSHELL_H
-# define DRAWSHELL_H
-# include "puissance.h"
-# define R_D "\e[31mo\e[0m"
-# define Y_D "\e[33mo\e[0m"
+#include "puissance.h"
 
-void draw_border(t_game game, int nb);
-#endif
+void	put_in_grid(t_game *game, int put_in)
+{
+	int	lines;
+
+	lines = game->line;
+	lines--;
+	while (game->grid[lines][put_in] != 0)
+	   lines--;
+	game->grid[lines][put_in] = game->ia;	
+}
