@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:08:20 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:16:11 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,14 @@ bool			is_echap(const char *buffer);
 void			set_terminal_mode(t_game *game);
 void			unset_terminal_mode(t_game *game);
 int				ft_print(int c);
+
+/*
+** |----------------------------------------------------------------------------
+** |                                                                           |
+** |                                 TOOLS                                     |
+** |                                                                           |
+** |----------------------------------------------------------------------------
+*/
+char			*read_one_line(int fd);
 
 #endif

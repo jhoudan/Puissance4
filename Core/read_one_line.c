@@ -33,6 +33,7 @@ char	*read_one_line(int fd)
 		ft_strcat(str, buffer);
 		if (ft_strchr(str, '\n'))
 		{
+			(ft_strchr(str, '\n'))[0] = 0;
 			break ;
 		}
 		ft_memset(buffer, 0, 26);
