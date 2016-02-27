@@ -106,7 +106,8 @@ int				get_weight_pos_tab(t_game *game,
 					int **weight_pos_tab, int player);
 int				find_value_to_ret(t_game *game, int *values, int player);
 int				recurs_get_column(t_game *game, int depth, int player);
-
+int				get_column_to_play(t_game *game);
+int				grid_is_full(t_game *game);
 
 void			put_in_grid(t_game *game, int put_in);
 t_game			*copy_struct_game(t_game *original);

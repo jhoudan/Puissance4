@@ -24,7 +24,7 @@ int		*get_valid_column(t_game game)
 	int		*ret;
 	int		i_column;
 
-	ret = ft_memalloc(sizeof(int) * game.column);
+	ret = (int *)ft_memalloc(sizeof(int) * game.column);
 	if (ret == NULL)
 		return (NULL);
 	i_column = 0;
