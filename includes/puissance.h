@@ -32,7 +32,7 @@ typedef struct	s_game
 	int			**grid;
 	int			ia;
 	int			game_mode;
-	int			fd;
+	int			profondeur;
 }				t_game;
 
 /*
@@ -84,7 +84,10 @@ int				get_player_input(t_game *game);
 ** |                                                                           |
 ** |----------------------------------------------------------------------------
 */
+
 char			*read_one_line(int fd);
+int				get_number(char *buff);
 int				get_line_pos_when_put_the_piece(t_game grid, int column);
 int				*get_valid_columns(t_game game);
+
 #endif
