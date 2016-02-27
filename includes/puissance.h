@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 12:27:07 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 12:29:55 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct	s_game
 {
 	int			column;
 	int			line;
+	int			**grid;
 }				t_game;
 
 int				game_core(t_game *game);
