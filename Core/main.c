@@ -17,7 +17,11 @@ int				main(void)
 	t_game	*game;
 
 	game = init_game();
-	take_all_param_to_begin(game);
+	if (take_all_param_to_begin(game) == -1)
+	{
+		free_game(game);
+		return (-1);
+	}
 	free_game(game);
 	return (0);
 }
