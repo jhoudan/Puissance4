@@ -50,7 +50,8 @@ int			get_player_input(t_game *game)
 	while (42)
 	{
 		ask_for_input(game);
-		get_next_line(0, &line);
+		line = read_one_line(0);
+		ft_putendl(line);
 		if (line && ft_isnumber(line))
 		{
 			input = ft_atoi(line);
