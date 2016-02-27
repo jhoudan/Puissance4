@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:26:28 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 16:41:14 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/27 16:54:56 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_game		*init_game(void)
 		return (NULL);
 	game->column = -1;
 	game->line = -1;
+	game->game_mode = -1;
 	return (game);
 }
 
