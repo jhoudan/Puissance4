@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
+/*   Created: 2016/02/27 16:49:55 by mdezitte          #+#    #+#             */
+/*   Updated: 2016/02/27 16:50:11 by mdezitte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance.h"
 
-int				main(void)
+int		get_number(char *buff)
 {
-	t_game	*game;
-	int		input;
+	int		i;
 
-	if (!(game = init_game()))
+	i = 0;
+	if (ft_strlen(buff) > 2)
 		return (-1);
-	take_all_param_to_begin(game);
-	if (game->column == -1 || game->column == -1
-			|| !(game->grid = fill_grid(game->line, game->column)))
+	while (buff[i])
 	{
-		free(game);
-		return (-1);
+		if (ft_isdigit(buff[i]) == 0)
+			return (-1);
+		i++;
 	}
-	draw_grid(game);
-	input = get_player_input(game);
-	free_game(game);
-	return (0);
+	i = ft_atoi(buff);
+	return (i);
 }

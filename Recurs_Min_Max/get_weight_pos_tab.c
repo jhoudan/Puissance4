@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_in_grid.c                                      :+:      :+:    :+:   */
+/*   get_weight_pos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvarzari <mvarzari@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mressier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 14:44:12 by mvarzari          #+#    #+#             */
-/*   Updated: 2016/02/27 17:23:40 by jhoudan          ###   ########.fr       */
+/*   Created: 2016/02/27 18:02:39 by mressier          #+#    #+#             */
+/*   Updated: 2016/02/27 18:02:41 by mressier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "puissance.h"
+#include "../includes/puissance.h"
 
-void	put_in_grid(t_game *game, int put_in)
+int		get_weight_pos_tab(t_game *game, int **weight_pos_tab, )
 {
-	int	line;
-
-	line = game->line;
-	line--;
-	while (game->grid[line][put_in] != 0)
-		line--;
-	game->grid[line][put_in] = game->ia;
+	*weight_pos_tab = ft_intnew();
 }

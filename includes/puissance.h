@@ -6,7 +6,6 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 17:57:16 by mdumouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +19,9 @@
 # include <stdbool.h>
 # include <term.h>
 # include <fcntl.h>
+# include <errno.h>
+
+# define WIN_VALUE		10000
 
 # define RED_DOT "\e[31mo\e[0m"
 # define YELLOW_DOT "\e[33mo\e[0m"
@@ -33,7 +35,7 @@ typedef struct	s_game
 	int			**grid;
 	int			ia;
 	int			game_mode;
-	int			fd;
+	int			profondeur;
 }				t_game;
 
 /*
@@ -85,7 +87,19 @@ int				get_player_input(t_game *game);
 ** |                                                                           |
 ** |----------------------------------------------------------------------------
 */
+
 char			*read_one_line(int fd);
+int				get_number(char *buff);
+
+/*
+**	Recurs_min_max
+*/
+int				get_line_pos_when_put_the_piece(t_game grid, int column);
+int				*get_valid_columns(t_game game);
+int				get_nb_valide_columns(t_game *game);
+
+
+void			put_in_grid(t_game *game, int put_in);
 
 /*
 ** |----------------------------------------------------------------------------
