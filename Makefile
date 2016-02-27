@@ -29,7 +29,8 @@ CHECK = checker.c \
 TOOLS = tools.c \
 		read_one_line.c
 
-MULTI = multi_player.c
+MULTI = multi_player.c \
+		multi_player_2.c
 
 NCURSES = 
 
