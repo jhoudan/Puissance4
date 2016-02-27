@@ -79,28 +79,6 @@ int				get_player_input(t_game *game);
 /*
 ** |----------------------------------------------------------------------------
 ** |                                                                           |
-** |                                 TERMCAP                                   |
-** |                                                                           |
-** |----------------------------------------------------------------------------
-*/
-
-/*
-** get_values.c
-*/
-bool			is_alpha(const char *buffer);
-bool			is_enter(const char *buffer);
-bool			is_echap(const char *buffer);
-
-/*
-** init_terminal.c
-*/
-void			set_terminal_mode(t_game *game);
-void			unset_terminal_mode(t_game *game);
-int				ft_print(int c);
-
-/*
-** |----------------------------------------------------------------------------
-** |                                                                           |
 ** |                                 TOOLS                                     |
 ** |                                                                           |
 ** |----------------------------------------------------------------------------
