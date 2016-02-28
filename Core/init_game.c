@@ -84,11 +84,18 @@ static void		select_column(t_game *game)
 		if (!(buff = read_one_line(0)))
 			return ;
 		game->column = get_number(buff);
-		if (game->column < 7 || game->column > 50)
+		if (game->game_mode == 1 &&  (game->column < 7 || game->column > 50))
 		{
 			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
 				buff, "\n\033[31mIs not a valid");
 			ft_putendl_fd(" argument take [7 - 50]", 2);
+			ft_strdel(&buff);
+		}
+		else if (game->game_mode == 2 && (game->column < 7 || game->column > 37))
+		{
+			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
+				buff, "\n\033[31mIs not a valid");
+			ft_putendl_fd(" argument take [7 - 37]", 2);
 			ft_strdel(&buff);
 		}
 		else
