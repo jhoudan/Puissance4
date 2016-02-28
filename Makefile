@@ -20,7 +20,8 @@ CORE = alloc_struct.c \
 		init_game.c \
 		init_game_2.c \
 		put_in_grid.c \
-		main.c
+		main.c \
+		shell_game_manager.c 
 
 DISPLAY = drawshell.c \
 

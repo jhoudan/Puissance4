@@ -83,6 +83,7 @@ void			select_multiplayers(t_game *game);
 /*
 ** shell_game_manager.c
 */
+int				shell_game_manager(t_game *game);
 int				check_if_win(t_game *game, int out, int id);
 
 /*

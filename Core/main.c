@@ -29,8 +29,8 @@ int				main(void)
 	{
 		if (game->game_mode == 1)
 			shell_game_manager(game);
-		else if (game->game_mode == 2)
-			ncurse_game_manager(game);
+//		else if (game->game_mode == 2)
+//			ncurse_game_manager(game);
 	}
 	free_game(game);
 	return (0);

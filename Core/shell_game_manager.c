@@ -12,7 +12,7 @@
 
 #include "puissance.h"
 
-static void	player_turn(t_game *game)
+static int	player_turn(t_game *game)
 {
 	int 	input;
 	int		id;
@@ -23,12 +23,13 @@ static void	player_turn(t_game *game)
 		id = 1;
 	input = get_player_input(game);
 	put_in_grid(game, input, id);
-	if (check_if_win(game, i, id) == 1)
+	if (check_if_win(game, input, id) == 1)
 	{
 		draw_grid(game);
 		ft_putendl("\033[34mPLAYER WIN\033[0m");
 		return (1);
 	}
+	return (0);
 }
 
 static int	ia_turn(t_game *game)
@@ -60,17 +61,17 @@ int		shell_game_manager(t_game *game)
 		draw_grid(game);
 		if (game->ia == 1)
 		{
-			if (ia_turn(game) == 1);
+			if (ia_turn(game) == 1)
 				return (0);
 		}
 		if (player_turn(game) == 1)
 			return (2);
 		if (game->ia == 2)
 		{
-			if (ia_turn(game) == 1);
+			if (ia_turn(game) == 1)
 				return (0);			
 		}
 	}
 	ft_putstr("\033[34mMatch nul !\033[0m\n");
-		return (1);
+	return (1);
 }
