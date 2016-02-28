@@ -1,4 +1,4 @@
-#include "../ft_weight.h"
+#include "../includes/puissance.h"
 
 static int		stc_check_line(t_game *game, int player, t_pos *pos);
 static int 		stc_check_column(t_game *game, int player, t_pos *pos);
@@ -49,11 +49,8 @@ static int		stc_check_line(t_game *game, int player, t_pos *pos)
 	x = pos->x;
 	while (--x >= 0 && grid[pos->y][x] == player)
 		ret++;
-<<<<<<< HEAD
 	if (ret >= 4)
 		return (WIN_VALUE);
-=======
->>>>>>> 8fd1ccae8aaa0405d6643cdb9bb63496909efd54
 	return (ret);
 }
 
@@ -71,11 +68,8 @@ static int 		stc_check_column(t_game *game, int player, t_pos *pos)
 	y = pos->y;
 	while (--y >= 0 && grid[y][pos->x] == player)
 		ret++;
-<<<<<<< HEAD
 	if (ret >= 4)
 		return (WIN_VALUE);
-=======
->>>>>>> 8fd1ccae8aaa0405d6643cdb9bb63496909efd54
 	return (ret);
 }
 
@@ -96,11 +90,8 @@ static int		stc_check_diag_SO_NE(t_game *game, int player, t_pos *pos)
 	x = pos->x;
 	while (--y >= 0 && --x >= 0 && grid[y][x] == player)
 		ret++;
-<<<<<<< HEAD
 	if (ret >= 4)
 		return (WIN_VALUE);
-=======
->>>>>>> 8fd1ccae8aaa0405d6643cdb9bb63496909efd54
 	return (ret);
 }
 
@@ -121,10 +112,7 @@ static int		stc_check_diag_NO_SE(t_game *game, int player, t_pos *pos)
 	x = pos->x;
 	while (--y >= 0 && ++x < game->column && grid[y][x] == player)
 		ret++;
-<<<<<<< HEAD
 	if (ret >= 4)
 		return (WIN_VALUE);
-=======
->>>>>>> 8fd1ccae8aaa0405d6643cdb9bb63496909efd54
 	return (ret);
 }
