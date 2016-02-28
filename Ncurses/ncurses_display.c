@@ -4,7 +4,11 @@
 
 static void		put_circle(int x, int y, int identifier)
 {
-	mvprintw(x, y, "%d", identifier);
+	wattron(stdscr, COLOR_PAIR(identifier)); 
+	mvaddstr(x - 1, y - 2, " /|\\ ");
+	mvaddstr(x, y - 2, "|||||");
+	mvaddstr(x + 1, y - 2, " \\|/ ");
+	wattroff(stdscr, COLOR_PAIR(identifier));
 }
 
 static void		put_vals(t_game *game, int row, int col)
@@ -19,9 +23,9 @@ static void		put_vals(t_game *game, int row, int col)
 		while (y > 0)
 		{
 			if (game->grid[x - 1][y - 1] != 0)
-				put_circle(((row / game->line) * x + (row / game->line) * x - 1)
-						/ 2, ((col / game->column) * y + 
-							(col / game->column) * y - 1) / 2,
+				put_circle(((row / game->line) * x + (row / game->line) *
+							(x - 1)) / 2, ((col / game->column) * y + 
+							(col / game->column) * (y - 1)) / 2,
 						game->grid[x -1][y - 1]);
 						y--;
 		}
@@ -65,7 +69,7 @@ static void		drawline(int *t, char ch)
 	free(t);
 }
 
-static void	draw_grid_2(t_game *game)
+static void	draw_grid_ncurses(t_game *game)
 {
 	int row;
 	int col;
@@ -75,15 +79,12 @@ static void	draw_grid_2(t_game *game)
 	clear();
 	start_color();
 	getmaxyx(stdscr, row, col);
-
-	if (game->line > row)
-		ft_putendl("ok");
-	if (game->column > col)
-		ft_putendl("ok");
- 
+	col = col > 222 ? 222 : col;
 	init_color(COLOR_WHITE, 500, 500, 500);
-	init_pair(1, COLOR_BLACK, COLOR_WHITE);
-	wattron(stdscr, COLOR_PAIR(1));
+	init_pair(3, COLOR_BLACK, COLOR_WHITE);
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+	wattron(stdscr, COLOR_PAIR(3));
 	x = 0;
 	while (x <= game->column)
 	{
@@ -98,32 +99,58 @@ static void	draw_grid_2(t_game *game)
 		drawline(createtab(i, 0, i, (col / game->column) * game->column), ' ');
 		x++;
 	}
-	/*drawline(createtab(0, 0, 0, col), '-');
-	drawline(createtab(0, col - 1, row, col - 1), '|');
-	drawline(createtab(row - 1, 0, row - 1, col), '-');*/
-	wattroff(stdscr, COLOR_PAIR(1));
+	wattroff(stdscr, COLOR_PAIR(3));
 	put_vals(game, row, col);
 	refresh();
 }
 
-/*void mouse_click(t_game *game)
+static void	put_mouse_value(int column, t_game *game)
 {
-	MEVENT	event;
-	assert(getmouse(&event) == OK);
+	int row;
+	int col;
 
-}*/
+	getmaxyx(stdscr, row, col);
+	col = col > 222 ? 222 : col;
+	if (column % (col / game->column) != 0)
+	{
+		mvprintw(0, 0, "%d", column);
+		if (column > (col / game->column))
+			put_in_grid(game, column / (col / game->column), 1);
+		else
+			put_in_grid(game, 0, 1);
+		put_vals(game, row, col);
+	}
+
+}
+
+static void check_scr_size(t_game *game)
+{
+	int row;
+	int col;
+
+	getmaxyx(stdscr, row, col);
+	if (((game->line * 4) + 1) > row || ((game->column * 6) + 1) > col)
+	{
+		clear();
+		mvaddstr(0, 0, "Window too small, please make it bigger to continue");
+		refresh();
+	}
+	else
+	{
+		draw_grid_ncurses(game);
+	}
+}
 
 static void	key_manager(int key, t_game *game)
 {
 	MEVENT	event;
 	if (key == KEY_RESIZE)
-		draw_grid_2(game);
+		check_scr_size(game);
 	if (key == KEY_MOUSE)
 	{
 		assert(getmouse(&event) == OK);
-		clear();
-		mvprintw(0, 0, "%x", event.bstate);
-		refresh();
+		if (event.bstate == 4)
+			put_mouse_value(event.x, game);
 	}
 
 
@@ -137,9 +164,7 @@ void	ncurses_init(t_game *game)
 	cbreak();
 	keypad(stdscr, TRUE);
 	curs_set(0);
-	game->grid[0][0] = 2;
-	game->grid[0][1] = 1;
-	draw_grid_2(game);
+	check_scr_size(game);
 	mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
 	while((ch = getch()) != 27)
 		key_manager(ch, game);

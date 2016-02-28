@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:51:36 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/28 11:30:50 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/28 16:13:04 by mdezitte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,11 @@ static void		select_line(t_game *game)
 				buff, "\n\033[31mIs not a valid");
 			ft_putendl_fd(" argument take [6 - 30]", 2);
 		}
-		else if (game->game_mode == 2 && (game->line < 6 || game->line > 13))
+		else if (game->game_mode == 2 && (game->line < 6 || game->line > 20))
 		{
 			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
 				buff, "\n\033[31mIs not a valid");
-			ft_putendl_fd(" argument take [6 - 13]", 2);
+			ft_putendl_fd(" argument take [6 - 20]", 2);
 		}
 		else
 			break ;

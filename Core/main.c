@@ -6,7 +6,7 @@
 /*   By: jhoudan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 19:34:17 by mdezitte         ###   ########.fr       */
+/*   Updated: 2016/02/28 15:36:34 by mdezitte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int				main(void)
 	}
 	if (game->game_mode == 1)
 		shell_game_manager(game);
-//	else if (game->game_mode == 2)
-//		ncurse_game_manager(game);
+	else if (game->game_mode == 2)
+		ncurses_init(game);
 	free_game(game);
 	return (0);
 }
