@@ -5,8 +5,6 @@ static int 		stc_check_column(t_game *game, int player, t_pos *pos);
 static int		stc_check_diag_SO_NE(t_game *game, int player, t_pos *pos);
 static int		stc_check_diag_NO_SE(t_game *game, int player, t_pos *pos);
 
-// CHECK INVALIDE READ
-
 /*
 **  	------------------------------------------------------
 **  	|						MAIN	        	         |
@@ -21,10 +19,10 @@ int		ft_weight_player(t_game *game, int player, int column, int line)
 	pos.y = line;
 	pos.x = column;
 	weight = 0;
-	weight += stc_check_line(game, player, &pos);
-	weight += stc_check_column(game, player, &pos);
-	weight += stc_check_diag_SO_NE(game, player, &pos);
-	weight += stc_check_diag_NO_SE(game, player, &pos);
+	weight += ft_conv(stc_check_line(game, player, &pos), 1);
+	weight += ft_conv(stc_check_column(game, player, &pos), 1);
+	weight += ft_conv(stc_check_diag_SO_NE(game, player, &pos), 1);
+	weight += ft_conv(stc_check_diag_NO_SE(game, player, &pos), 1);
 	return (weight);
  }
 

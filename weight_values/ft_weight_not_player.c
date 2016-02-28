@@ -20,10 +20,10 @@ int			ft_weight_not_player(t_game *game, int player, int column , int line)
 	pos.y = line;
 	pos.x = column;
 	weight = 0;
-	weight += stc_check_line(game, player, &pos);
-	weight += stc_check_column(game, player, &pos);
-	weight += stc_check_diag_SO_NE(game, player, &pos);
-	weight += stc_check_diag_NO_SE(game, player, &pos);
+	weight += ft_conv(stc_check_line(game, player, &pos), 2);
+	weight += ft_conv(stc_check_column(game, player, &pos), 2);
+	weight += ft_conv(stc_check_diag_SO_NE(game, player, &pos), 2);
+	weight += ft_conv(stc_check_diag_NO_SE(game, player, &pos), 2);
 	return (weight);
 }
 
