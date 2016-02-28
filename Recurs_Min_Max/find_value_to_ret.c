@@ -59,7 +59,8 @@ int				find_value_to_ret(t_game *game, int *values, int player)
 	{
 		while (i < game->column)
 		{
-			if (values[i] < values[ret])
+			if (values[ret] == -1
+					|| (values[i] < values[ret] && values[i] != -1))
 				ret = i;
 			if (values[i] == values[ret])
 				ret = get_the_one_nearest_to_mid(i, ret, (game->column - 1) / 2);

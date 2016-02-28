@@ -73,7 +73,8 @@ int					recurs_get_column(t_game *game, int depth, int player)
 	ret = get_weight_pos_tab(game, &values, player);
 	if (ret == -1)
 		return (-1);
-	if (ret < WIN_VALUE)
+	ft_putnbrendl(ret);
+	if (ret < WIN_VALUE && ret > -WIN_VALUE)
 		values = get_recurs_weight_tab(game, values, player, depth);
 	ret = ret_value(game, values, player, depth);
 	ft_memdel((void **)&values);

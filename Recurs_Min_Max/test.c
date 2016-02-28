@@ -22,13 +22,24 @@ int		main(void)
 	game->column = 4;
 	game->line = 4;
 	game->grid = fill_grid(game->line, game->column);
+	game->grid[1][0] = 1;
+	game->grid[2][0] = 1;
+	game->grid[3][0] = 1;
+	
+	game->grid[1][1] = 1;
+	game->grid[2][1] = 2;
 	game->grid[3][1] = 2;
-	game->grid[3][0] = 2;
+	
+	game->grid[2][2] = 1;
+	game->grid[3][2] = 2;
+
+	game->grid[3][3] = 1;
+
 	// game->grid[2][1] = 1;
 	// game->grid[3][0] = 2;
 	// game->grid[2][0] = 1;
 	// ft_putnbrendl(get_line_pos_when_put_the_piece(*game, 3));
-	game->ia = 1;
+	game->ia = 2;
 	game->profondeur = 3;
 	i = get_column_to_play(game);
 	ft_putstr("Ret = ");
