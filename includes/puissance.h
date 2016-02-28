@@ -19,8 +19,9 @@
 # include <time.h>
 # include <stdbool.h>
 # include <fcntl.h>
-# include <ncurses.h>
 # include <errno.h>
+# include <curses.h>
+# include <assert.h>
 
 # define WIN_VALUE		100000
 # define IA				1
