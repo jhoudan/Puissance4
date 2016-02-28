@@ -37,7 +37,6 @@ static int	ia_turn(t_game *game)
 	int		input;
 
 	input = get_column_to_play(game);
-	ft_putnbrendl(input);
 	put_in_grid(game, input, game->ia);
 	if (check_if_win(game, input, game->ia) == 1)
 	{
