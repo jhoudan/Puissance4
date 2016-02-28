@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 21:17:35 by mvarzari         ###   ########.fr       */
+/*   Updated: 2016/02/28 10:31:06 by jogarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,27 @@ int				get_number(char *buff);
 int				get_line_pos_when_put_the_piece(t_game grid, int column);
 int				*get_valid_column(t_game game);
 int				get_weight_pos_tab(t_game *game,
-					int **weight_pos_tab, int player);
+		int **weight_pos_tab, int player);
 int				find_value_to_ret(t_game *game, int *values, int player);
 int				recurs_get_column(t_game *game, int depth, int player);
 int				get_column_to_play(t_game *game);
 int				grid_is_full(t_game *game);
+
+/*
+**	Weight_pos
+*/
+typedef struct 		s_pos
+{
+	int				x;
+	int				y;
+}					t_pos;
+int				ft_weigth_pos(t_game *game, int column, int player);
+int				ft_weight_player(t_game *game, int player, int column, int line);
+int				ft_weight_not_player(t_game *game, int player, int column, int line);
+
+/*
+**	Fin du bordel merci
+*/
 
 void			put_in_grid(t_game *game, int put_in, int identifier);
 t_game			*copy_struct_game(t_game *original);
@@ -128,7 +144,6 @@ t_game			*copy_struct_game(t_game *original);
 */
 
 void			draw_grid(t_game *game);
-
 
 /*
 ** ncurses
