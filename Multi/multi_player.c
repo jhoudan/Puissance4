@@ -88,13 +88,19 @@ int			multi_player(t_game *game)
 		{
 			put_in_grid(game, input, IA);
 			if (check_if_win(game, input, IA) == 1)
+			{
+				draw_grid(game);
 				return (ft_putendl_i("\033[34mPLAYER 1 WIN\033[0m"));
+			}
 		}
 		else
 		{
 			put_in_grid(game, input, PLAYER);
 			if (check_if_win(game, input, PLAYER) == 1)
+			{
+				draw_grid(game);
 				return (ft_putendl_i("\033[34mPLAYER 2 WIN\033[0m"));
+			}
 		}
 	}
 	ft_putstr("\033[34mMatch nul !\033[0m\n");
