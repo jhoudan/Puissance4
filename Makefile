@@ -37,7 +37,8 @@ TOOLS = tools.c \
 		copy_struct_game.c
 
 MULTI = multi_player.c \
-		multi_player_2.c
+		multi_player_2.c \
+		check_if_win.c
 
 RECURS = find_value_to_ret.c \
 		 get_column_to_play.c \

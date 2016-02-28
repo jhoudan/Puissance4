@@ -138,6 +138,12 @@ int				multi_player(t_game *game);
 int				check_bot_left(t_game *game, int out, int line, int id);
 int				check_bot_right(t_game *game, int out, int line, int id);
 
+
+/*
+** check_if_win.c
+*/
+int			check_if_win(t_game *game, int out, int id);
+
 /*
 ** |----------------------------------------------------------------------------
 ** |                                                                           |

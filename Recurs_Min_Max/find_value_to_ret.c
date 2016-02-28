@@ -85,7 +85,6 @@ static int		get_the_higher(t_game *game, int *values)
 int				find_value_to_ret(t_game *game, int *values, int player)
 {
 	int		ret;
-	int		i;
 
 	if (player == game->ia)
 		ret = get_the_higher(game, values);
