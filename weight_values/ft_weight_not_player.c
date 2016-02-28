@@ -57,7 +57,7 @@ static int		stc_check_diag_so_ne(t_game *game, int player, t_pos *pos)
 	ret = 0;
 	y = pos->y;
 	x = pos->x;
-	while (++y < game->line && ++x >= 0 && grid[y][x] == player)
+	while (++y < game->line && ++x < game->column && grid[y][x] == player)
 		ret++;
 	y = pos->y;
 	x = pos->x;
