@@ -87,6 +87,7 @@ void			free_game(t_game *game);
 ** init_game.c
 */
 int				take_all_param_to_begin(t_game *game);
+void			take_profondeur(t_game *game, int values);
 
 /*
 ** init_game_2.c

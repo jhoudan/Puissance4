@@ -36,3 +36,36 @@ void		select_multiplayers(t_game *game)
 		ft_strdel(&buff);
 	}
 }
+
+
+void		take_profondeur(t_game *game, int values)
+{
+	int		nb_case;
+
+	nb_case = game->column * game->line;
+	if (values == 0)
+	{
+		if (nb_case > 1000)
+			game->profondeur = 1;
+		else
+			game->profondeur = 3;
+	}
+	if (values == 1)
+	{
+		if (nb_case > 1000)
+			game->profondeur = 1;
+		else if (nb_case > 225)
+			game->profondeur = 3;
+		else
+			game->profondeur = 5;
+	}
+	if (values == 2)
+	{
+		if (nb_case > 1000)
+			game->profondeur = 3;
+		else if (nb_case > 100)
+			game->profondeur = 5;
+		else
+			game->profondeur = 7;
+	}
+}

@@ -19,19 +19,25 @@ static void		select_difficulty(t_game *game)
 	while (42)
 	{
 		ft_putendl("\033[33mChoise your difficulty mode :");
-		ft_putstr("Enter [\033[32mnormal\033[33m] or ");
-		ft_putstr("[\033[32mhard\033[33m] : \033[0m");
+		ft_putstr("Enter [\033[32measy\033[33m], [\033[32mnormal\033[33m]");
+		ft_putstr(" or [\033[32mhard\033[33m] : \033[0m");
 		if (!(buff = read_one_line(0)))
 			return ;
+		if (ft_strcmp(buff, "easy") == 0)
+		{
+			take_profondeur(game, 0);
+			ft_strdel(&buff);
+			break ;
+		}
 		if (ft_strcmp(buff, "normal") == 0)
 		{
-			game->profondeur = 5;
+			take_profondeur(game, 1);
 			ft_strdel(&buff);
 			break ;
 		}
 		if (ft_strcmp(buff, "hard") == 0)
 		{
-			game->profondeur = 7;
+			take_profondeur(game, 2);
 			ft_strdel(&buff);
 			break ;
 		}
@@ -103,7 +109,7 @@ static void		select_line(t_game *game)
 		if (!(buff = read_one_line(0)))
 			return ;
 		game->line = get_number(buff);
-		if (game->game_mode == 1 && (game->line < 6 || game->line > 50))
+		if (game->game_mode == 1 && (game->line < 6 || game->line > 40))
 		{
 			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
 				buff, "\n\033[31mIs not a valid");
@@ -127,14 +133,14 @@ int				take_all_param_to_begin(t_game *game)
 	select_display_mode(game);
 	if (game->game_mode == -1)
 		return (1);
-	select_difficulty(game);
-	if (game->profondeur == -1)
-		return (1);
 	select_column(game);
 	if (game->column == -1)
 		return (1);
 	select_line(game);
 	if (game->line == -1)
+		return (1);
+	select_difficulty(game);
+	if (game->profondeur == -1)
 		return (1);
 	select_multiplayers(game);
 	if (game->multi_players == -1)
