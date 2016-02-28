@@ -53,7 +53,7 @@ int			key_manager(int key, t_game *game)
 	int		id;
 	MEVENT	event;
 
-	id = game->ia == 1 ? 2 : 1;
+	id = (game->ia == 1) ? 2 : 1;
 	if (key == KEY_RESIZE)
 	{
 		check_scr_size(game);
@@ -70,6 +70,8 @@ int			key_manager(int key, t_game *game)
 			if (check_if_win(game, input, id) == 1)
 				return (1);
 		}
+		else
+			return (3);
 	}
 	return (0);
 }
