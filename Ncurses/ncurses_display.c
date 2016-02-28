@@ -225,7 +225,7 @@ void	ncurses_init(t_game *game)
 	curs_set(0);
 	check_scr_size(game);
 	mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
-	if (game->game_mode == 2)
+	if (game->multi_players == 2)
 	{
 		multiplayer_ncurses(game);
 		return ;
