@@ -1,37 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_weight_not_player.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mressier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/28 18:45:11 by mressier          #+#    #+#             */
+/*   Updated: 2016/02/28 18:45:13 by mressier         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/puissance.h"
-
-static int		stc_check_line(t_game *game, int player, t_pos *pos);
-static int 		stc_check_column(t_game *game, int player, t_pos *pos);
-static int		stc_check_diag_SO_NE(t_game *game, int player, t_pos *pos);
-static int		stc_check_diag_NO_SE(t_game *game, int player, t_pos *pos);
-
-
-/*
-**  	------------------------------------------------------
-**  	|						MAIN	        	         |
-**  	------------------------------------------------------
-*/
-
-int			ft_weight_not_player(t_game *game, int player, int column , int line)
-{
-	int		weight;
-	t_pos	pos;
-
-	pos.y = line;
-	pos.x = column;
-	weight = 0;
-	weight += ft_conv(stc_check_line(game, player, &pos), 2);
-	weight += ft_conv(stc_check_column(game, player, &pos), 2);
-	weight += ft_conv(stc_check_diag_SO_NE(game, player, &pos), 2);
-	weight += ft_conv(stc_check_diag_NO_SE(game, player, &pos), 2);
-	return (weight);
-}
-
-/*
-**  	------------------------------------------------------
-**  	|						Static	        	         |
-**  	------------------------------------------------------
-*/
 
 static int		stc_check_line(t_game *game, int player, t_pos *pos)
 {
@@ -50,7 +29,7 @@ static int		stc_check_line(t_game *game, int player, t_pos *pos)
 	return (ret);
 }
 
-static int 		stc_check_column(t_game *game, int player, t_pos *pos)
+static int		stc_check_column(t_game *game, int player, t_pos *pos)
 {
 	int		**grid;
 	int		ret;
@@ -67,7 +46,7 @@ static int 		stc_check_column(t_game *game, int player, t_pos *pos)
 	return (ret);
 }
 
-static int		stc_check_diag_SO_NE(t_game *game, int player, t_pos *pos)
+static int		stc_check_diag_so_ne(t_game *game, int player, t_pos *pos)
 {
 	int		**grid;
 	int		ret;
@@ -87,7 +66,7 @@ static int		stc_check_diag_SO_NE(t_game *game, int player, t_pos *pos)
 	return (ret);
 }
 
-static int		stc_check_diag_NO_SE(t_game *game, int player, t_pos *pos)
+static int		stc_check_diag_no_se(t_game *game, int player, t_pos *pos)
 {
 	int		**grid;
 	int		ret;
@@ -105,4 +84,26 @@ static int		stc_check_diag_NO_SE(t_game *game, int player, t_pos *pos)
 	while (--y >= 0 && ++x < game->column && grid[y][x] == player)
 		ret++;
 	return (ret);
+}
+
+/*
+**  	------------------------------------------------------
+**  	|						MAIN	        	         |
+**  	------------------------------------------------------
+*/
+
+int				ft_weight_not_player(t_game *game, int player,
+					int column, int line)
+{
+	int		weight;
+	t_pos	pos;
+
+	pos.y = line;
+	pos.x = column;
+	weight = 0;
+	weight += ft_conv(stc_check_line(game, player, &pos), 2);
+	weight += ft_conv(stc_check_column(game, player, &pos), 2);
+	weight += ft_conv(stc_check_diag_so_ne(game, player, &pos), 2);
+	weight += ft_conv(stc_check_diag_no_se(game, player, &pos), 2);
+	return (weight);
 }

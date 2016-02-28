@@ -18,32 +18,25 @@ static void		select_difficulty(t_game *game)
 
 	while (42)
 	{
-		ft_putendl("\033[33mChoise your difficulty mode :");
+		ft_putendl("\033[33mChoose your difficulty mode :");
 		ft_putstr("Enter [\033[32measy\033[33m], [\033[32mnormal\033[33m]");
 		ft_putstr(" or [\033[32mhard\033[33m] : \033[0m");
 		if (!(buff = read_one_line(0)))
 			return ;
-		if (ft_strcmp(buff, "easy") == 0)
+		if (!ft_strcmp(buff, "easy") || !ft_strcmp(buff, "normal"))
 		{
-			take_profondeur(game, 0);
-			ft_strdel(&buff);
-			break ;
-		}
-		if (ft_strcmp(buff, "normal") == 0)
-		{
-			take_profondeur(game, 1);
-			ft_strdel(&buff);
+			take_profondeur(game, (!ft_strcmp(buff, "easy")) ? 0 : 1);
 			break ;
 		}
 		if (ft_strcmp(buff, "hard") == 0)
 		{
 			take_profondeur(game, 2);
-			ft_strdel(&buff);
 			break ;
 		}
 		ft_error("\033[31m[PARSE ERROR] : ", buff, " not valid\n");
 		ft_strdel(&buff);
 	}
+	ft_strdel(&buff);
 }
 
 static void		select_display_mode(t_game *game)
@@ -74,7 +67,7 @@ static void		select_display_mode(t_game *game)
 	}
 }
 
-static void		select_column(t_game *game)
+static void		select_column(t_game *g)
 {
 	char	*buff;
 
@@ -83,27 +76,24 @@ static void		select_column(t_game *game)
 		ft_putstr("\033[33mEnter number of column :\033[0m ");
 		if (!(buff = read_one_line(0)))
 			return ;
-		game->column = get_number(buff);
-		if (game->game_mode == 1 &&  (game->column < 7 || game->column > 50))
+		g->column = get_number(buff);
+		if (g->game_mode == 1 && (g->column < 7 || g->column > 50))
 		{
 			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
 				buff, "\n\033[31mIs not a valid");
 			ft_putendl_fd(" argument take [7 - 50]", 2);
-			ft_strdel(&buff);
 		}
-		else if (game->game_mode == 2 && (game->column < 7 || game->column > 37))
+		else if (g->game_mode == 2 && (g->column < 7 || g->column > 37))
 		{
 			ft_error("\033[31m[PARSE ERROR]\033[0m : ",
 				buff, "\n\033[31mIs not a valid");
 			ft_putendl_fd(" argument take [7 - 37]", 2);
-			ft_strdel(&buff);
 		}
 		else
-		{
-			ft_strdel(&buff);
 			break ;
-		}
+		ft_strdel(&buff);
 	}
+	ft_strdel(&buff);
 }
 
 static void		select_line(t_game *game)

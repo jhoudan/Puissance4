@@ -41,7 +41,7 @@ typedef struct	s_game
 	int			multi_players;
 }				t_game;
 
-typedef struct 	s_pos
+typedef struct	s_pos
 {
 	int			x;
 	int			y;
@@ -171,7 +171,6 @@ void			draw_grid_ncurses(t_game *game);
 ** |----------------------------------------------------------------------------
 */
 
-
 /*
 ** find_value_to_ret.c
 */
@@ -246,11 +245,12 @@ int				ft_conv(int value, int option);
 ** ft_weight_not_player.c
 */
 int				ft_weight_not_player(t_game *game, int player,
-					int column , int line);
+					int column, int line);
 
 /*
 ** ft_weight_player.c
 */
-int				ft_weight_player(t_game *game, int player, int column, int line);
+int				ft_weight_player(t_game *game, int player,
+	int column, int line);
 
 #endif
