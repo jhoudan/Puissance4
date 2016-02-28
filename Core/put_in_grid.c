@@ -18,7 +18,11 @@ void	put_in_grid(t_game *game, int put_in, int identifier)
 
 	line = game->line;
 	line--;
-	while (game->grid[line][put_in] != 0)
+	while (line < game->line && line > -1 && put_in < game->column 
+		&& put_in > -1 && game->grid[line][put_in] != 0)
+	{
 		line--;
-	game->grid[line][put_in] = identifier;
+	}
+	if (line > -1 && line < game->line && put_in < game->column && put_in > -1)
+		game->grid[line][put_in] = identifier;
 }
