@@ -27,15 +27,15 @@ int		ft_conv(int value, int option)
 	if (option == 1)
 	{
 		conv = (value == 1) ? 10 : 0;
-		conv = (value == 2) ? 100 : 0;
-		conv = (value == 3) ? 1000 : 0;
-		conv = (value >= 4) ? 100000 : 0;
+		conv = (value == 2) ? 100 : conv;
+		conv = (value == 3) ? 1000 : conv;
+		conv = (value >= 4) ? 100000 : conv;
 	}
 	if (option == 2)
 	{
 		conv = (value == 1) ? 45 : 0;
-		conv = (value == 2) ? 1900 : 0;
-		conv = (value >= 3) ? 10000 : 0;
+		conv = (value == 2) ? 190 : conv;
+		conv = (value >= 3) ? 1900 : conv;
 	}
 	return (conv);
 }

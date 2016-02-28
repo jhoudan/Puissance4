@@ -61,13 +61,13 @@ int			check_if_win(t_game *game, int out, int id)
 	int line;
 
 	line = take_last_piece(game, out);
-	if (check_column(game, out, line, id) == 4)
+	if (check_column(game, out, line, id) >= 4)
 		return (1);
-	if (check_line(game, out, line, id) == 4)
+	if (check_line(game, out, line, id) >= 4)
 		return (1);
-	if (check_bot_left(game, out, line, id) == 4)
+	if (check_bot_left(game, out, line, id) >= 4)
 		return (1);
-	if (check_bot_right(game, out, line, id) == 4)
+	if (check_bot_right(game, out, line, id) >= 4)
 		return (1);
 	return (0);
 }

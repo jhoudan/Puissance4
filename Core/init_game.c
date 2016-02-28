@@ -25,13 +25,13 @@ static void		select_difficulty(t_game *game)
 			return ;
 		if (ft_strcmp(buff, "normal") == 0)
 		{
-			game->profondeur = 3;
+			game->profondeur = 5;
 			ft_strdel(&buff);
 			break ;
 		}
 		if (ft_strcmp(buff, "hard") == 0)
 		{
-			game->profondeur = 5;
+			game->profondeur = 7;
 			ft_strdel(&buff);
 			break ;
 		}
