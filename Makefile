@@ -6,7 +6,7 @@
 #    By: mdumouli <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/10 10:00:41 by mressier          #+#    #+#              #
-#    Updated: 2016/02/27 21:18:06 by mvarzari         ###   ########.fr        #
+#    Updated: 2016/02/28 13:22:30 by jhoudan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ NCURSES = ncurses_display.c
 
 TOOLS = tools.c \
 		read_one_line.c \
+		ft_putendl_i.c \
 		copy_struct_game.c
 
 MULTI = multi_player.c \
