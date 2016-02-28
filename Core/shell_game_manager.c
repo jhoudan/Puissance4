@@ -37,6 +37,7 @@ static int	ia_turn(t_game *game)
 	int		input;
 
 	input = get_column_to_play(game);
+	ft_putnbrendl(input);
 	put_in_grid(game, input, game->ia);
 	if (check_if_win(game, input, game->ia) == 1)
 	{
@@ -58,12 +59,12 @@ int		shell_game_manager(t_game *game)
 	max = game->column * game->line;
 	while (++i < max)
 	{
-		draw_grid(game);
 		if (game->ia == 1)
 		{
 			if (ia_turn(game) == 1)
 				return (0);
 		}
+		draw_grid(game);
 		if (player_turn(game) == 1)
 			return (2);
 		if (game->ia == 2)
