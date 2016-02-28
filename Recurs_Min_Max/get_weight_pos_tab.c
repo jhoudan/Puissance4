@@ -27,8 +27,11 @@ int		get_weight_pos_tab(t_game *game, int **values, int player)
 		if (valide_columns[i_column])
 			(*values)[i_column] = ft_weight_pos(game, i_column, player);
 		if ((*values)[i_column] >= WIN_VALUE)
-			return ((player == game->ia) ?
+		{
+			(*values)[i_column] = ((player == game->ia) ?
 				(*values)[i_column] : -(*values)[i_column]);
+			return ((*values)[i_column]);
+		}
 		i_column++;
 	}
 	ft_memdel((void **)&valide_columns);
