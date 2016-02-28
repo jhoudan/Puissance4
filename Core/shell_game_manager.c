@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/28 11:04:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/28 11:04:56 by mdezitte         ###   ########.fr       */
+/*   Updated: 2016/02/28 13:13:27 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	player_turn(t_game *game)
 {
-	int 	input;
+	int		input;
 	int		id;
 
 	if (game->ia == 1)
@@ -48,7 +48,7 @@ static int	ia_turn(t_game *game)
 	return (0);
 }
 
-int		shell_game_manager(t_game *game)
+int			shell_game_manager(t_game *game)
 {
 	int i;
 	int max;
@@ -70,7 +70,7 @@ int		shell_game_manager(t_game *game)
 		if (game->ia == 2)
 		{
 			if (ia_turn(game) == 1)
-				return (0);			
+				return (0);
 		}
 	}
 	ft_putstr("\033[34mMatch nul !\033[0m\n");

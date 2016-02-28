@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   multi_player.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhoudan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/28 13:15:28 by jhoudan           #+#    #+#             */
+/*   Updated: 2016/02/28 13:25:54 by jhoudan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <puissance.h>
 
-static int	check_column(t_game *game, int out , int line, int id)
+static int	check_column(t_game *game, int out, int line, int id)
 {
 	int i;
 	int nb_piece;
 
 	i = 1;
 	nb_piece = 1;
-	while (line + i < game->line && game->grid[line +i][out] == id)
+	while (line + i < game->line && game->grid[line + i][out] == id)
 		i++;
 	nb_piece += i - 1;
 	return (nb_piece);
@@ -53,14 +65,14 @@ int			check_if_win(t_game *game, int out, int id)
 		return (1);
 	if (check_line(game, out, line, id) == 4)
 		return (1);
-	if (check_bot_left(game, out , line, id) == 4)
+	if (check_bot_left(game, out, line, id) == 4)
 		return (1);
 	if (check_bot_right(game, out, line, id) == 4)
 		return (1);
 	return (0);
 }
 
-int		multi_player(t_game *game)
+int			multi_player(t_game *game)
 {
 	int	input;
 	int	max;
@@ -76,19 +88,13 @@ int		multi_player(t_game *game)
 		{
 			put_in_grid(game, input, IA);
 			if (check_if_win(game, input, IA) == 1)
-			{
-				ft_putendl("\033[34mPLAYER 1 WIN\033[0m");
-				return (0);
-			}
+				return (ft_putendl_i("\033[34mPLAYER 1 WIN\033[0m"));
 		}
 		else
 		{
 			put_in_grid(game, input, PLAYER);
 			if (check_if_win(game, input, PLAYER) == 1)
-			{
-				ft_putendl("\033[34mPLAYER 2 WIN\033[0m");
-				return (0);
-			}
+				return (ft_putendl_i("\033[34mPLAYER 2 WIN\033[0m"));
 		}
 	}
 	ft_putstr("\033[34mMatch nul !\033[0m\n");
