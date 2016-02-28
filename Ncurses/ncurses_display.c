@@ -185,6 +185,30 @@ static int ia_turn_ncurse(t_game *game)
 	return (0);
 }
 
+static void multiplayer_ncurses(t_game *game)
+{
+	int max;
+	int ch;
+	int i;
+	int win;
+
+	i = -1;
+	max = game->column * game->line;
+	while((ch = getch()) != 27 && ++i < max)
+	{
+		if (game->ia == 1 && win != 3)
+			game->ia = 2;
+		else if (game->ia == 2 && win != 3)
+			game->ia = 1;
+		win = key_manager(ch, game);
+		if (win == 1)
+			break ;
+		put_vals(game);
+	}
+	endwin();
+	draw_grid(game);
+}
+
 void	ncurses_init(t_game *game)
 {
 	int ch;
@@ -201,6 +225,11 @@ void	ncurses_init(t_game *game)
 	curs_set(0);
 	check_scr_size(game);
 	mousemask(ALL_MOUSE_EVENTS | REPORT_MOUSE_POSITION, NULL);
+	if (game->game_mode == 2)
+	{
+		multiplayer_ncurses(game);
+		return ;
+	}
 	if (game->ia == 1)
 		ia_turn_ncurse(game);
 	while((ch = getch()) != 27 && ++i < max)
