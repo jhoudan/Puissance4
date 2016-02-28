@@ -6,7 +6,7 @@
 /*   By: jhoudan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/28 13:15:28 by jhoudan           #+#    #+#             */
-/*   Updated: 2016/02/28 13:21:25 by jhoudan          ###   ########.fr       */
+/*   Updated: 2016/02/28 13:25:54 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			check_if_win(t_game *game, int out, int id)
 	return (0);
 }
 
-int		multi_player(t_game *game)
+int			multi_player(t_game *game)
 {
 	int	input;
 	int	max;
