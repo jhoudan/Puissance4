@@ -12,23 +12,23 @@
 
 #include "../includes/puissance.h"
 
-int		get_weight_pos_tab(t_game *game, int **weight_pos_tab, int player)
+int		get_weight_pos_tab(t_game *game, int **values, int player)
 {
 	int		i_column;
 	int		*valide_columns;
 
 	i_column = 0;
 	valide_columns = get_valid_column(*game);
-	*weight_pos_tab = ft_intnew(game->column, -1);
-	if (*weight_pos_tab == NULL)
+	*values = ft_intnew(game->column, -1);
+	if (*values == NULL)
 		return (-1);
 	while (i_column < game->column)
 	{
 		if (valide_columns[i_column])
-			(*weight_pos_tab)[i_column] = ft_weight_pos(game, i_column, player);
-		if ((*weight_pos_tab)[i_column] >= WIN_VALUE)
+			(*values)[i_column] = ft_weight_pos(game, i_column, player);
+		if ((*values)[i_column] >= WIN_VALUE)
 			return ((player == game->ia) ?
-				(*weight_pos_tab)[i_column] : -(*weight_pos_tab)[i_column]);
+				(*values)[i_column] : -(*values)[i_column]);
 		i_column++;
 	}
 	ft_memdel((void **)&valide_columns);

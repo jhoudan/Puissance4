@@ -31,9 +31,12 @@ static int			*get_recurs_weight_tab(t_game *game, int *values,
 	//printf("depth = %d\n", depth);
 	while (i_column < game->column)
 	{
-		//ft_putstr("Passage\n");
-		if (values[i_column])
+		ft_putstr("i_column = ");
+		ft_putnbrendl(i_column);
+		ft_putnbrendl(values[i_column]);
+		if (values[i_column] != -1)
 		{
+			ft_putstr("Coucou je suis rentré ");
 			cpy_game = copy_struct_game(game);
 			//ft_putnbrendl(cpy_game->grid[cpy_game->line - 1][(cpy_game->column - 1) / 2]);
 			put_in_grid(cpy_game, i_column, player);
@@ -58,6 +61,9 @@ static int			ret_value(t_game *game, int *values, int player, int depth)
 	int		ret;
 
 	ret = find_value_to_ret(game, values, player);
+	ft_putnbrendl(ret);
+	ft_putstr("Depth = ");
+	ft_putnbrendl(depth);
 	if (depth != game->profondeur)
 		ret = values[ret];
 	return (ret);
@@ -86,9 +92,8 @@ int					recurs_get_column(t_game *game, int depth, int player)
 	//ft_putnbrendl(ret);
 	if (ret == -1)
 		return (-1);
-	if (ret >= WIN_VALUE)
-		depth = 1;
-	values = get_recurs_weight_tab(game, values, player, depth);
+	if (ret < WIN_VALUE)
+		values = get_recurs_weight_tab(game, values, player, depth);
 	ret = ret_value(game, values, player, depth);
 	//ft_putstr("Final ret : ");
 	//ft_putnbrendl(ret);
@@ -99,7 +104,11 @@ int					recurs_get_column(t_game *game, int depth, int player)
 int					get_column_to_play(t_game *game)
 {
 	int				depth;
+	int				ret;
 
 	depth = game->profondeur;
-	return (recurs_get_column(game, depth, game->ia));
+	ret = recurs_get_column(game, depth, game->ia);
+	ft_putstr("COUCOU C'EST LA FIN\n");
+	ft_putnbr(ret);
+	return (ret);
 }
