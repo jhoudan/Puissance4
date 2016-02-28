@@ -29,10 +29,21 @@ CHECK = checker.c \
 NCURSES = ncurses_display.c 
 
 TOOLS = tools.c \
-		read_one_line.c
+		read_one_line.c \
+		copy_struct_game.c
 
 MULTI = multi_player.c \
 		multi_player_2.c
+
+RECURS = find_value_to_ret.c \
+		 get_column_to_play.c \
+		 get_line_pos_when_put_the_piece.c \
+		 get_valid_column.c \
+		 get_weight_pos_tab.c \
+		 grid_is_full.c
+
+WEIGHT = ft_weight.c \
+		 ft_weight_player.c
 
 ifdef DEBUG
 FLAGS = -Wall -Werror -Wextra -g
@@ -55,7 +66,11 @@ SRC_TOOLS = $(addprefix Tools/, $(TOOLS))
 
 SRC_MULTI  = $(addprefix Multi/, $(MULTI))
 
-SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_TOOLS) $(SRC_DISPLAY) $(SRC_MULTI) $(SRC_NCURSES)
+SRC_RECURS = $(addprefix Recurs_Min_Max/, $(RECURS))
+
+SRC_WEIGHT = $(addprefix weight_values/, $(WEIGHT))
+
+SRC = $(SRC_CORE) $(SRC_CHECK) $(SRC_TERMCAP) $(SRC_TOOLS) $(SRC_DISPLAY) $(SRC_MULTI) $(SRC_NCURSES) $(SRC_RECURS) $(SRC_WEIGHT)
 
 OBJ = $(SRC:%.c=.tmp/%.o)
 
@@ -74,6 +89,8 @@ prepare:
 		mkdir -p .tmp/Display
 		mkdir -p .tmp/Tools
 		mkdir -p .tmp/Multi
+		mkdir -p .tmp/Recurs_Min_Max
+		mkdir -p .tmp/weight_values
 
 norm:
 		norminette $(SRC) $(HEADER)

@@ -105,12 +105,12 @@ char			*read_one_line(int fd);
 int				get_number(char *buff);
 
 /*
-**	Recurs_min_max
+**	Recurs_min_max (Debut du bordel)
 */
 int				get_line_pos_when_put_the_piece(t_game grid, int column);
 int				*get_valid_column(t_game game);
 int				get_weight_pos_tab(t_game *game,
-		int **weight_pos_tab, int player);
+					int **weight_pos_tab, int player);
 int				find_value_to_ret(t_game *game, int *values, int player);
 int				recurs_get_column(t_game *game, int depth, int player);
 int				get_column_to_play(t_game *game);
@@ -124,7 +124,8 @@ typedef struct 		s_pos
 	int				x;
 	int				y;
 }					t_pos;
-int				ft_weigth_pos(t_game *game, int column, int player);
+
+int				ft_weight_pos(t_game *game, int column, int player);
 int				ft_weight_player(t_game *game, int player, int column, int line);
 int				ft_weight_not_player(t_game *game, int player, int column, int line);
 

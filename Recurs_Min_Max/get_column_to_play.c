@@ -69,17 +69,13 @@ static int			ret_value(t_game *game, int *values, int player, int depth)
 int					recurs_get_column(t_game *game, int depth, int player)
 {
 	int			*values;
-	int			nb_valide_columns;
-	int			i_column;
 	int			ret;
 
 	if (mid_is_empty(game))
 		return (game->column / 2);
 	if (grid_is_full(game))
 		return (0);
-	//ret = get_weight_pos_tab(game, &values, player);
-	ret = 0; 							// tmp
-	values = ft_intnew(game->column, 1); //tmp
+	ret = get_weight_pos_tab(game, &values, player);
 	if (ret == -1)
 		return (-1);
 	if (ret >= WIN_VALUE)
@@ -93,10 +89,7 @@ int					recurs_get_column(t_game *game, int depth, int player)
 int					get_column_to_play(t_game *game)
 {
 	int				depth;
-	int				column;
 
 	depth = game->profondeur;
-	ft_putstr("Pouet : ");
-	ft_putnbrendl(depth);
 	return (recurs_get_column(game, depth, game->ia));
 }

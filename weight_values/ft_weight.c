@@ -1,15 +1,16 @@
-#include "../ft_weight.h"
+#include "../includes/puissance.h"
 
 int		ft_weight_pos(t_game *game, int column, int player)
 {
 	int		line;
 	int		weigth;
-	int		**grid;
+	//int		**grid;
 
-	line = ft_get_line(game, column);
+	line = get_line_pos_when_put_the_piece(*game, column);
 	weigth = 0;
 	weigth += ft_weight_player(game, player, column, line);
 	//weigth += ft_weigth_not_player(game, reverse_player(player), column, line);
+	return (weigth);
 }
 
 int		reverse_player(int player)
