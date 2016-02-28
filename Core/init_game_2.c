@@ -61,9 +61,9 @@ void		take_profondeur(t_game *game, int values)
 	}
 	if (values == 2)
 	{
-		if (nb_case > 1000)
+		if (nb_case > 200)
 			game->profondeur = 3;
-		else if (nb_case > 100)
+		else if (nb_case > 50)
 			game->profondeur = 5;
 		else
 			game->profondeur = 7;
