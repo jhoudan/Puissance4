@@ -29,7 +29,7 @@ t_game		*copy_struct_game(t_game *original)
 	while (i_line < original->line)
 	{
 		copy->grid[i_line] = (int *)ft_memcpy(copy->grid[i_line],
-				original->grid[i_line], copy->column);
+				original->grid[i_line], copy->column * sizeof(int));
 		i_line++;
 	}
 	return (copy);
