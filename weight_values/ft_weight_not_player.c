@@ -45,7 +45,7 @@ static int		stc_check_line(t_game *game, int player, t_pos *pos)
 	while (++x < game->column && grid[pos->y][x] == player)
 		ret++;
 	x = pos->x;
-	while (--x > 0 && grid[pos->y][x] == player)
+	while (--x >= 0 && grid[pos->y][x] == player)
 		ret++;
 	return (ret);
 }
@@ -59,10 +59,10 @@ static int 		stc_check_column(t_game *game, int player, t_pos *pos)
 	grid = game->grid;
 	ret = 0;
 	y = pos->y;
-	while (++y < game->column && grid[y][pos->x] == player)
+	while (++y < game->line && grid[y][pos->x] == player)
 		ret++;
 	y = pos->y;
-	while (--y > 0 && grid[y][pos->x] == player)
+	while (--y >= 0 && grid[y][pos->x] == player)
 		ret++;
 	return (ret);
 }
@@ -78,11 +78,11 @@ static int		stc_check_diag_SO_NE(t_game *game, int player, t_pos *pos)
 	ret = 0;
 	y = pos->y;
 	x = pos->x;
-	while (++y > 0 && ++x >= 0 && grid[y][x] == player)
+	while (++y < game->line && ++x >= 0 && grid[y][x] == player)
 		ret++;
 	y = pos->y;
 	x = pos->x;
-	while (--y > 0 && --x >= 0 && grid[y][x] == player)
+	while (--y >= 0 && --x >= 0 && grid[y][x] == player)
 		ret++;
 	return (ret);
 }
