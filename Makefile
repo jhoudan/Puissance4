@@ -27,7 +27,9 @@ DISPLAY = drawshell.c \
 
 CHECK = checker.c \
 
-NCURSES = ncurses_display.c 
+NCURSES = drawer.c \
+		key.c \
+		ncurses_display.c
 
 TOOLS = tools.c \
 		read_one_line.c \

@@ -41,7 +41,7 @@ typedef struct	s_game
 	int			multi_players;
 }				t_game;
 
-typedef struct 	s_pos
+typedef struct	s_pos
 {
 	int			x;
 	int			y;
@@ -152,13 +152,24 @@ int				check_bot_right(t_game *game, int out, int line, int id);
 void			ncurses_init(t_game *game);
 
 /*
+** key.c
+*/
+int				key_manager(int key, t_game *game);
+void			check_scr_size(t_game *game);
+
+/*
+** drawer.c
+*/
+void			put_vals(t_game *game);
+void			draw_grid_ncurses(t_game *game);
+
+/*
 ** |----------------------------------------------------------------------------
 ** |                                                                           |
 ** |                             RECURS_MIN_MAX                                |
 ** |                                                                           |
 ** |----------------------------------------------------------------------------
 */
-
 
 /*
 ** find_value_to_ret.c
@@ -234,11 +245,12 @@ int				ft_conv(int value, int option);
 ** ft_weight_not_player.c
 */
 int				ft_weight_not_player(t_game *game, int player,
-					int column , int line);
+					int column, int line);
 
 /*
 ** ft_weight_player.c
 */
-int				ft_weight_player(t_game *game, int player, int column, int line);
+int				ft_weight_player(t_game *game, int player,
+	int column, int line);
 
 #endif

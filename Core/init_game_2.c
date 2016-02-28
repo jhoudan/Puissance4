@@ -37,19 +37,13 @@ void		select_multiplayers(t_game *game)
 	}
 }
 
-
 void		take_profondeur(t_game *game, int values)
 {
 	int		nb_case;
 
 	nb_case = game->column * game->line;
 	if (values == 0)
-	{
-		if (nb_case > 1000)
-			game->profondeur = 1;
-		else
-			game->profondeur = 3;
-	}
+		game->profondeur = (nb_case > 1000) ? 1 : 3;
 	if (values == 1)
 	{
 		if (nb_case > 1000)
