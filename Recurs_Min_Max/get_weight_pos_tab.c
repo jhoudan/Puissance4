@@ -12,7 +12,7 @@
 
 #include "../includes/puissance.h"
 
-int		get_weight_pos_tab(t_game *game, int **values, int player)
+int				get_weight_pos_tab(t_game *game, int **values, int player)
 {
 	int		i_column;
 	int		*valide_columns;
@@ -30,6 +30,7 @@ int		get_weight_pos_tab(t_game *game, int **values, int player)
 		{
 			(*values)[i_column] = ((player == game->ia) ?
 				(*values)[i_column] : -(*values)[i_column]);
+			ft_memdel((void **)&valide_columns);
 			return ((*values)[i_column]);
 		}
 		i_column++;
