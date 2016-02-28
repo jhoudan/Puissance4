@@ -22,7 +22,7 @@
 # include <ncurses.h>
 # include <errno.h>
 
-# define WIN_VALUE		10000
+# define WIN_VALUE		100000
 # define IA				1
 # define PLAYER			2
 
