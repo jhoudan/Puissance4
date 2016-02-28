@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/26 20:12:46 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/28 10:31:06 by jogarcia         ###   ########.fr       */
+/*   Updated: 2016/02/28 13:19:57 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int				get_player_input(t_game *game);
 
 char			*read_one_line(int fd);
 int				get_number(char *buff);
+int				ft_putendl_i(char *str);
 
 /*
 **	Recurs_min_max (Debut du bordel)
