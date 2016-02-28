@@ -44,7 +44,8 @@ RECURS = find_value_to_ret.c \
 		 grid_is_full.c
 
 WEIGHT = ft_weight.c \
-		 ft_weight_player.c
+		 ft_weight_player.c \
+		 ft_weight_not_player.c
 
 ifdef DEBUG
 FLAGS = -Wall -Werror -Wextra -g

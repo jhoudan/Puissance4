@@ -1,19 +1,6 @@
 #include "../includes/puissance.h"
 
-int		ft_weight_pos(t_game *game, int column, int player)
-{
-	int		line;
-	int		weight;
-	//int		**grid;
-
-	line = get_line_pos_when_put_the_piece(*game, column);
-	weight = 0;
-	weight += ft_weight_player(game, player, column, line);
-	//weight += ft_weight_not_player(game, reverse_player(player), column, line);
-	return (weight);
-}
-
-int		reverse_player(int player)
+static int		reverse_player(int player)
 {
 	if (player == 1)
 		return (2);
@@ -22,18 +9,14 @@ int		reverse_player(int player)
 	return (0);
 }
 
-// static int		stc_check_line(t_game *game, int player, t_pos *pos, int ret)
-// {
-// 	int		**grid;
+int				ft_weight_pos(t_game *game, int column, int player)
+{
+	int		line;
+	int		weight;
 
-// 	grid = game->grid;
-// 	if (ret != stc_check_line(game, player, pos, ret) && ((pos->x)++) != -1)
-// 		ret = stc_check_line(game, player, pos, ret++);
-// 	(pos->x)--;
-// 	if (ret != stc_check_line(game, player, pos, ret) && ((pos->x)--) != -1)
-// 		ret = stc_check_line(game, player, pos, ret++);
-
-// 	if (grid[pos->y][pos->x] == player)
-// 		return (1 + ret);
-// 	return (0 + ret);
-// }
+	line = get_line_pos_when_put_the_piece(*game, column);
+	weight = 0;
+	weight += ft_weight_player(game, player, column, line);
+	weight += ft_weight_not_player(game, reverse_player(player), column, line);
+	return (weight);
+}
