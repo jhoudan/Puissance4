@@ -6,6 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
+/*   Updated: 2016/02/27 19:34:17 by mdezitte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +25,13 @@ int				main(void)
 		free(game);
 		return (-1);
 	}
-	if (game->game_mode == 2)
-		ncurses_init(game);
 	if (game->multi_players == 1)
 	{
+		if (game->game_mode == 1)
+			shell_game_manager(game);
+		else if (game->game_mode == 2)
+			ncurse_game_manager(game);
 	}
-	else
-		multi_player(game);
 	free_game(game);
 	return (0);
 }

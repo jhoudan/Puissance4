@@ -44,7 +44,7 @@ static int	take_last_piece(t_game *game, int out)
 	return (line);
 }
 
-static int	check_if_win(t_game *game, int out, int id)
+int			check_if_win(t_game *game, int out, int id)
 {
 	int line;
 

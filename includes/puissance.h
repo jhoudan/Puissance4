@@ -81,6 +81,11 @@ int				take_all_param_to_begin(t_game *game);
 void			select_multiplayers(t_game *game);
 
 /*
+** shell_game_manager.c
+*/
+int				check_if_win(t_game *game, int out, int id);
+
+/*
 ** |----------------------------------------------------------------------------
 ** |                                                                           |
 ** |                                  CHECK                                    |
