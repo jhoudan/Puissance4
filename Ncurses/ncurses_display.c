@@ -44,8 +44,6 @@ static void	multiplayer_ncurses(t_game *game)
 			break ;
 		put_vals(game);
 	}
-	endwin();
-	draw_grid(game);
 }
 
 static void	game_ncurses(t_game *game, int max, int i)
