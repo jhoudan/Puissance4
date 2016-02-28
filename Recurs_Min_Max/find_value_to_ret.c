@@ -12,7 +12,32 @@
 
 #include "../includes/puissance.h"
 
-int		find_value_to_ret(t_game *game, int *values, int player)
+static int		get_the_one_nearest_to_mid(int index_1, int index_2, int mid)
+{
+	int		res1;
+	int		res2;
+
+	res1 = mid - index_1;
+	res2 = mid - index_2;
+	if (res1 < 0)
+		res1 = -res1;
+	if (res2 < 0)
+		res2 = -res2;
+	if (res1 < res2)
+		return (index_1);
+	else if (res2 < res1)
+		return (index_2);
+	else
+	{
+		srand(time(NULL));
+		if ((rand() % 2) + 1 == 1)
+			return (index_1);
+		else
+			return (index_2);
+	}
+}
+
+int				find_value_to_ret(t_game *game, int *values, int player)
 {
 	int		ret;
 	int		i;
@@ -25,6 +50,8 @@ int		find_value_to_ret(t_game *game, int *values, int player)
 		{
 			if (values[i] > values[ret])
 				ret = i;
+			if (values[i] == values[ret])
+				ret = get_the_one_nearest_to_mid(i, ret, (game->column - 1) / 2);
 			i++;
 		}
 	}
@@ -34,6 +61,8 @@ int		find_value_to_ret(t_game *game, int *values, int player)
 		{
 			if (values[i] < values[ret])
 				ret = i;
+			if (values[i] == values[ret])
+				ret = get_the_one_nearest_to_mid(i, ret, (game->column - 1) / 2);
 			i++;
 		}
 	}
