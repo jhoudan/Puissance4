@@ -226,6 +226,7 @@ int				ft_putendl_i(char *str);
 ** ft_weight.c
 */
 int				ft_weight_pos(t_game *game, int column, int player);
+int				ft_conv(int value, int option);
 
 /*
 ** ft_weight_not_player.c
