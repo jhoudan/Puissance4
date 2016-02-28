@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhoudan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 12:15:51 by mdezitte          #+#    #+#             */
 /*   Updated: 2016/02/27 19:34:17 by mdezitte         ###   ########.fr       */

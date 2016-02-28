@@ -36,7 +36,6 @@ static int			*get_recurs_weight_tab(t_game *game, int *values,
 			put_in_grid(cpy_game, i_column, player);
 			values[i_column] = recurs_get_column(cpy_game, depth - 1,
 				(player == 1) ? 2 : 1);
-			ft_putnbrendl(values[i_column]);
 			free_game(cpy_game);
 		}
 		i_column++;
@@ -48,13 +47,9 @@ static int			ret_value(t_game *game, int *values, int player, int depth)
 {
 	int		ret;
 
-	if (depth == game->profondeur)
-		ret = find_value_to_ret(game, values, game->ia);
-	else
-	{
-		ret = find_value_to_ret(game, values, player);
+	ret = find_value_to_ret(game, values, player);
+	if (depth != game->profondeur)
 		ret = values[ret];
-	}
 	return (ret);
 }
 

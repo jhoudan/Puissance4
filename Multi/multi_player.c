@@ -91,7 +91,6 @@ int		multi_player(t_game *game)
 			}
 		}
 	}
-	if (i == max - 1)
-		ft_putstr("\033[34mMatch nul !\033[0m\n");
+	ft_putstr("\033[34mMatch nul !\033[0m\n");
 	return (1);
 }
