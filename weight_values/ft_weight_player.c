@@ -4,7 +4,6 @@ static int		stc_check_line(t_game *game, int player, t_pos *pos);
 static int 		stc_check_column(t_game *game, int player, t_pos *pos);
 static int		stc_check_diag_SO_NE(t_game *game, int player, t_pos *pos);
 static int		stc_check_diag_NO_SE(t_game *game, int player, t_pos *pos);
-static int 		stc_conv_ret_in_weight(int value);
 
 // CHECK INVALIDE READ
 

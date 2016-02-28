@@ -12,7 +12,7 @@ static int		stc_check_diag_NO_SE(t_game *game, int player, t_pos *pos);
 **  	------------------------------------------------------
 */
 
-int			ft_weigth_not_player(t_game *game, int player, int column , int line)
+int			ft_weight_not_player(t_game *game, int player, int column , int line)
 {
 	int		weight;
 	t_pos	pos;
@@ -33,13 +33,10 @@ int			ft_weigth_not_player(t_game *game, int player, int column , int line)
 **  	------------------------------------------------------
 */
 
-// DOING FUNCTION TO CHANGE VALUE -> REAL WEIGHT
-
 static int		stc_check_line(t_game *game, int player, t_pos *pos)
 {
 	int		**grid;
 	int		ret;
-	int		value;
 	int		x;
 
 	grid = game->grid;
@@ -57,7 +54,6 @@ static int 		stc_check_column(t_game *game, int player, t_pos *pos)
 {
 	int		**grid;
 	int		ret;
-	int		value;
 	int		y;
 
 	grid = game->grid;
@@ -68,7 +64,7 @@ static int 		stc_check_column(t_game *game, int player, t_pos *pos)
 	y = pos->y;
 	while (--y > 0 && grid[y][pos->x] == player)
 		ret++;
-	return (value);
+	return (ret);
 }
 
 static int		stc_check_diag_SO_NE(t_game *game, int player, t_pos *pos)
@@ -106,7 +102,7 @@ static int		stc_check_diag_NO_SE(t_game *game, int player, t_pos *pos)
 		ret++;
 	y = pos->y;
 	x = pos->x;
-	while (--y >= 0 && ++x < game->column && grid[y][x] == player);
+	while (--y >= 0 && ++x < game->column && grid[y][x] == player)
 		ret++;
 	return (ret);
 }
