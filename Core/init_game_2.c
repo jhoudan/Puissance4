@@ -6,7 +6,7 @@
 /*   By: mdezitte <mdezitte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 19:33:48 by mdezitte          #+#    #+#             */
-/*   Updated: 2016/02/27 19:34:17 by mdezitte         ###   ########.fr       */
+/*   Updated: 2016/02/28 11:30:31 by jhoudan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void		select_multiplayers(t_game *game)
 			ft_strdel(&buff);
 			break ;
 		}
+		ft_strdel(&buff);
 	}
 }
