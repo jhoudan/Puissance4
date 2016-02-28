@@ -22,8 +22,12 @@ int		grid_is_full(t_game *game)
 	while (i < game->column)
 	{
 		if (value[i])
+		{
+			ft_memdel((void**)&value);
 			return (0);
+		}
 		i++;
 	}
+	ft_memdel((void**)&value);
 	return (1);
 }
