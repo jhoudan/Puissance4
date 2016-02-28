@@ -37,35 +37,59 @@ static int		get_the_one_nearest_to_mid(int index_1, int index_2, int mid)
 	}
 }
 
+static int		get_the_most_little(t_game *game, int *values)
+{
+	int		i;
+	int		ret;
+
+	ret = 0;
+	i = 0;
+	while (i < game->column)
+	{
+		if (values[ret] == -1
+				|| (values[i] < values[ret] && values[i] != -1))
+			ret = i;
+		if (values[i] == values[ret])
+			ret = get_the_one_nearest_to_mid(i, ret,
+				(game->column - 1) / 2);
+		i++;
+	}
+	return (ret);
+}
+
+static int		get_the_higher(t_game *game, int *values)
+{
+	int		i;
+	int		ret;
+
+	i = 0;
+	ret = 0;
+	while (i < game->column)
+	{
+		if (values[i] > values[ret])
+			ret = i;
+		if (values[i] == values[ret])
+			ret = get_the_one_nearest_to_mid(i, ret,
+				(game->column - 1) / 2);
+		i++;
+	}
+	return (ret);
+}
+
+/*
+** |----------------------------------------------------------------------------
+** |                                 Main                                      |
+** |----------------------------------------------------------------------------
+*/
+
 int				find_value_to_ret(t_game *game, int *values, int player)
 {
 	int		ret;
 	int		i;
 
-	i = 0;
-	ret = 0;
 	if (player == game->ia)
-	{
-		while (i < game->column)
-		{
-			if (values[i] > values[ret])
-				ret = i;
-			if (values[i] == values[ret])
-				ret = get_the_one_nearest_to_mid(i, ret, (game->column - 1) / 2);
-			i++;
-		}
-	}
+		ret = get_the_higher(game, values);
 	else
-	{
-		while (i < game->column)
-		{
-			if (values[ret] == -1
-					|| (values[i] < values[ret] && values[i] != -1))
-				ret = i;
-			if (values[i] == values[ret])
-				ret = get_the_one_nearest_to_mid(i, ret, (game->column - 1) / 2);
-			i++;
-		}
-	}
+		ret = get_the_most_little(game, values);
 	return (ret);
 }
