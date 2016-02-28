@@ -152,6 +152,18 @@ int				check_bot_right(t_game *game, int out, int line, int id);
 void			ncurses_init(t_game *game);
 
 /*
+** key.c
+*/
+int				key_manager(int key, t_game *game);
+void			check_scr_size(t_game *game);
+
+/*
+** drawer.c
+*/
+void			put_vals(t_game *game);
+void			draw_grid_ncurses(t_game *game);
+
+/*
 ** |----------------------------------------------------------------------------
 ** |                                                                           |
 ** |                             RECURS_MIN_MAX                                |
